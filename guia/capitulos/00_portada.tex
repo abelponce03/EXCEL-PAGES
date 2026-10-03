@@ -1,0 +1,41 @@
+% ---------------------------------------------------------------- PORTADA
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[azul] (current page.north west) rectangle ([yshift=-9cm]current page.north east);
+  \fill[naranja] ([yshift=-9cm]current page.north west) rectangle ([yshift=-9.25cm]current page.north east);
+  \node[anchor=north west,text=white,font=\sffamily\bfseries\fontsize{30}{36}\selectfont,align=left]
+    at ([xshift=2.2cm,yshift=-2.6cm]current page.north west) {Guía de uso};
+  \node[anchor=north west,text=white,font=\sffamily\Large,align=left,text width=16cm]
+    at ([xshift=2.2cm,yshift=-4.3cm]current page.north west)
+    {Libro de Excel para el\\[2pt]\textbf{Análisis de rentabilidad del negocio de paquetería}};
+  \node[anchor=north west,text=white!85!azul,font=\sffamily\normalsize]
+    at ([xshift=2.2cm,yshift=-7.2cm]current page.north west) {Manual paso a paso, con imágenes y ejercicios de práctica};
+\end{tikzpicture}
+
+\vspace*{8.2cm}
+{\large\color{azul}\textbf{Para quién es esta guía}}\par\smallskip
+Para la persona que llevará el libro de Excel. No hace falta saber Excel ni contabilidad: todo se explica desde el principio.
+Si sigue los capítulos en orden y hace los ejercicios, en una o dos sesiones de trabajo podrá registrar contenedores,
+hacer el cierre de cada mes e interpretar los resultados.
+
+\bigskip
+{\large\color{azul}\textbf{Cómo leer esta guía}}\par\smallskip
+\begin{tabularx}{0.96\linewidth}{@{}lX@{}}
+\recuadro{1} & Los círculos rojos numerados de las imágenes indican, en orden, dónde debe mirar o escribir.\\[3pt]
+\hoja{ENTRADA} & Nombre de una hoja (pestaña) del libro.\\[3pt]
+\celda{C5} & Dirección de una celda: columna C, fila 5.\\[3pt]
+\escriba{5000} & Lo que debe escribir, tal cual.\\[3pt]
+\tecla{Enter} & Una tecla del teclado.\\
+\end{tabularx}
+
+\medskip
+\begin{tcolorbox}[colback=green!8,colframe=verde,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=3pt,bottom=3pt]
+\small Los cuadros verdes \textbf{«Lo que debe ver si lo hizo bien»} traen los números exactos que deben aparecer en su pantalla
+después de cada ejercicio. Si sus números coinciden, lo hizo bien.
+\end{tcolorbox}
+
+\vfill
+{\small\color{gris}
+Archivo del libro: \libro\hfill Versión de la guía: \version\\
+Las imágenes y los números de esta guía se generan automáticamente a partir del propio libro de Excel.}
+\end{titlepage}

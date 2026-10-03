@@ -1,0 +1,124 @@
+% ============================================================================
+\chapter{Preparar el libro con sus datos reales}\label{cap:preparar}
+% ============================================================================
+
+Este capítulo se hace \textbf{una sola vez}, antes de empezar a registrar contenedores reales. Reserve entre 2 y 4 horas y tenga
+a mano los documentos de la lista siguiente.
+
+\section{Reúna los documentos}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}X l@{}}
+\toprule
+\textbf{Dato} & \textbf{Dónde se obtiene} & \textbf{Hoja} \\ \midrule
+Tarifas por kg que cobra la empresa & Contratos con las agencias emisoras o lista de precios & \hoja{PRECIOS} \\
+Precio del diésel & Última factura o vale de CUPET & \hoja{PRECIOS} \\
+Cita del puerto y dieta del chofer & Comprobantes de pago & \hoja{PRECIOS} \\
+Pago por jornal (transitaria y centros) & Nómina o contrato de los trabajadores del desagrupe & \hoja{PRECIOS} \\
+Cargos de ENCI y A.V por contenedor & Facturas o tarifas escritas de cada transitaria & \hoja{PRECIOS} \\
+Comisión variable de los gestores & Contratos de los gestores & \hoja{PRECIOS} \\
+Valor del camión y de los equipos & Registro de activos fijos (contabilidad) & \hoja{ACTIVOS} \\
+Mantenimiento, seguros, licencias & Facturas del último año & \hoja{ACTIVOS} \\
+Salarios, alquiler, electricidad, comunicaciones\dots & Nóminas y facturas de un mes típico & \hoja{COSTOS\_FIJOS} \\
+Pago a choferes y ayudantes contratados & Contratos de servicio por región & \hoja{COSTOS\_FIJOS} \\
+Nombres y territorio de los 21 gestores & Plantilla de comercialización & \hoja{COMERCIAL} \\
+Tasas de impuestos & Contador / ONAT & \hoja{PARAMETROS} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Cree su archivo maestro}
+
+\begin{pasos}
+\paso Copie el archivo original \libro{} y guárdelo como \escribal{Rentabilidad\_\allowbreak Paqueteria\_\allowbreak MAESTRO.xlsx} en una carpeta fija, por ejemplo
+      \texttt{Documentos\textbackslash Rentabilidad}.
+\paso Guarde el original sin tocar en otra carpeta. Si algún día algo sale muy mal, podrá empezar de nuevo desde él.
+\paso A partir de ahora trabaje \textbf{siempre} en el archivo maestro. No trabaje en dos copias a la vez.
+\end{pasos}
+
+\section{Hoja PARAMETROS}
+
+\captura[0.8\linewidth]{parametros}{PARAMETROS: los valores que debe revisar}
+
+\begin{pasos}
+\paso \celda{C6} \textbf{Empresa}: escriba el nombre de la empresa.
+\paso \celda{C7} \textbf{Fecha\_Inicio}: el \textbf{primer día del primer mes} que va a registrar, por ejemplo \escriba{01/11/2026}.
+      Si quiere cargar también meses anteriores con datos que ya tiene, ponga el primero de ellos.
+\paso \celda{C8} \textbf{Metodo\_Prorrateo}: deje \textbf{KG}. Los gastos fijos se reparten según el peso, que es lo más justo.
+\paso \celda{C9} \textbf{Base\_Comision}: \textbf{\% DEL INGRESO} si a los gestores se les paga un porcentaje de lo cobrado, o
+      \textbf{USD POR KG} si se les paga un importe por kilogramo.
+\paso \celda{C10} \textbf{Tolerancia\_Comb}: 10\,\% es razonable. Con más tolerancia habrá menos alertas, y con menos, más control.
+\paso \celda{C11} \textbf{Mes\_Corte}: déjelo \textbf{vacío}.
+\paso \textbf{Normas técnicas} (filas 13 a 25): sustituya los valores ilustrativos por los medidos (sección~\ref{sec:medir}).
+\paso \textbf{Reclamaciones y banca} (filas 27 y 28): el porcentaje histórico de pérdidas y reclamaciones y lo que cobra el banco. Si no aplica, \escriba{0}.
+\paso \textbf{Tributos} (filas 30 a 34): confírmelos con el contador. Los valores del libro son los del régimen general de las MIPYMES en 2026.
+\end{pasos}
+
+\subsection{Cómo medir las normas técnicas}\label{sec:medir}
+
+Las normas son el consumo «normal» de cada tramo. Mídalas con 2 o 3 contenedores reales:
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Norma} & \textbf{Cómo se mide} \\ \midrule
+Litros por viaje al puerto & Litros de los vales de cada viaje ÷ número de viajes. Promedie. \\
+Km por viaje al puerto & Odómetro al volver $-$ odómetro al salir, en la hoja de ruta. \\
+Rendimiento del desagrupe & kg del contenedor ÷ jornales usados. Ejemplo: 10\,000 kg con 10 jornales = 1\,000 kg/jornal. \\
+Capacidad del camión & kg que el camión contratado carga realmente por viaje. \\
+Litros de traslado y de distribución & Litros de los vales de cada tramo y región ÷ viajes. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Hoja PRECIOS}
+
+\begin{pasos}
+\paso En la fila 6, cambie \celda{A6} por una fecha \textbf{igual o anterior} a su Fecha\_Inicio, por ejemplo \escriba{01/01/2026}.
+\paso Escriba los precios reales de cada columna, de la B a la N. La columna O es para anotar el documento de soporte.
+\paso Si hay servicios de las transitarias por contenedor, escríbalos en J (ENCI) y K (A.V). Si no cobran aparte, \escriba{0}.
+\paso Escriba la comisión en la columna que corresponda a su Base\_Comision: L, si es un porcentaje; M, si es en USD por kg.
+\end{pasos}
+
+\section{Hoja ACTIVOS}
+
+\begin{pasos}
+\paso Fila 6: cambie los datos del camión de ejemplo por los de su camión real: chapa, fecha de alta, valor de adquisición, valor residual y
+      vida útil. Pida estos datos al contador.
+\paso Fila 7: escriba sus equipos reales, o borre la fila con \tecla{Supr} si no los quiere incluir.
+\paso Columnas L y M: mantenimiento preventivo mensual y seguros, licencias e inspecciones anuales del camión.
+\paso Si tiene más activos, use las filas 8 a 15.
+\end{pasos}
+
+\section{Hoja COSTOS\_FIJOS}
+
+\captura[0.85\linewidth]{costos_fijos}{COSTOS\_FIJOS: columnas E (¿salario propio?) y F (valor base)}
+
+\begin{pasos}
+\paso Recorra los conceptos de las filas 6 a 27 y escriba en la columna \textbf{F} lo que se paga en un mes normal.
+\paso En la columna \textbf{E}, «Sí» para los salarios de trabajadores propios y «No» para todo lo demás (alquiler, servicios contratados, etc.).
+\paso La fila 8 (comercialización fija) y las filas 15 a 17 (depreciación, mantenimiento y seguros) se llenan solas desde \hoja{COMERCIAL} y \hoja{ACTIVOS}.
+\paso Si un concepto no existe, ponga \escriba{0}. Si falta alguno, use una fila «Otros gastos fijos» y escriba su nombre en la columna B
+      (los nombres de los conceptos son editables).
+\end{pasos}
+
+\section{Hoja COMERCIAL}
+
+\begin{pasos}
+\paso \celda{C8}: el pago fijo mensual de cada gestor (es igual para todos).
+\paso Columna B: los nombres reales de los 21 gestores. La columna D tiene su territorio y la E muestra la región.
+\paso Si algún gestor tiene un pago fijo distinto, escríbalo en su celda de la columna F.
+\end{pasos}
+
+\section{Borre los ejemplos y compruebe}
+
+\begin{pasos}
+\paso Borre los contenedores de ejemplo y las bases de comercialización como en el ejercicio~8 (sección~\ref{sec:ej8}).
+\paso Vaya a \hoja{INICIO}: contenedores registrados 0, cuadres OK y conciliación CUADRA.
+\paso Guarde. \textbf{El libro está listo para registrar contenedores reales.}
+\end{pasos}
+
+\begin{nota}
+Para comprobar que todo está bien configurado, registre un contenedor real cuyo resultado conozca aproximadamente y compare. Si el resultado se
+aleja mucho de lo esperado, revise en \hoja{CALCULO} qué etapa tiene un costo extraño. Casi siempre es un precio o una norma mal escritos.
+\end{nota}

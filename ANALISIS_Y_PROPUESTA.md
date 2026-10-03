@@ -103,8 +103,8 @@ Objetivo: medir con rigor la rentabilidad del negocio de paquetería por contene
 
 ## 8. Plan de implantación
 
-1. Semana 1: el económico carga PRECIOS, ACTIVOS, COSTOS_FIJOS y COMERCIAL con datos reales y borra los ejemplos.
-2. Semanas 2 a 4: operaciones registra los contenedores del mes en curso y, si hay datos, de los 2 o 3 meses anteriores.
+1. Semana 1: el responsable del libro carga PRECIOS, ACTIVOS, COSTOS_FIJOS y COMERCIAL con datos reales y borra los ejemplos.
+2. Semanas 2 a 4: el responsable registra los contenedores del mes en curso y, si hay datos, de los 2 o 3 meses anteriores.
 3. Mes 1: se miden en la práctica las normas de combustible y de desagrupe, y se ajusta PARAMETROS.
-4. Mes 2: primer cierre mensual con conciliación de la comercialización. La dirección analiza la tarifa mínima por región.
+4. Mes 2: primer cierre mensual con conciliación de la comercialización. Se presenta a la dirección la tarifa mínima por región (SIMULADOR).
 5. Mes 3: decisión sobre las tarifas diferenciadas y la consolidación de viajes. Se revisa el resultado frente a la contabilidad oficial.

@@ -8,22 +8,23 @@ documentos Markdown del repositorio. Formato de cada bloque:
 """
 
 GUIA = [
-    ("h1", "GUÍA DE USO PARA EL PERSONAL"),
+    ("h1", "GUÍA DE USO (RESUMEN)"),
     ("p", "Este libro calcula de forma automática cuánto gana o pierde la empresa con cada contenedor de "
-          "paquetería, en cada región y en cada mes. El personal solo escribe datos en las celdas de "
-          "entrada (amarillas, letra azul). Todo lo demás se calcula con fórmulas."),
+          "paquetería, en cada región y en cada mes. Lo lleva UNA sola persona, que solo escribe datos en las celdas de "
+          "entrada (amarillas, letra azul). Todo lo demás se calcula con fórmulas. La guía completa, con imágenes y "
+          "ejercicios paso a paso, es el PDF «Guia_de_Uso_Rentabilidad_Paqueteria.pdf» que acompaña a este archivo."),
 
     ("h2", "1. Colores y convenciones"),
     ("t", [["Aspecto de la celda", "Significado", "¿Se puede escribir?"],
-           ["Fondo amarillo claro, letra azul", "Dato de entrada (valor tecleado por el personal)", "SÍ"],
+           ["Fondo amarillo claro, letra azul", "Dato de entrada (valor que usted escribe)", "SÍ"],
            ["Letra negra", "Fórmula de cálculo", "NO"],
            ["Letra verde", "Enlace a otra hoja", "NO"],
            ["Fondo gris en encabezados", "Títulos de columnas y secciones", "NO"],
            ["Celda vacía en columnas «(opcional)»", "El libro usa la norma técnica de PARAMETROS", "Sí, si hay dato real"]]),
-    ("p", "Las hojas están protegidas sin contraseña para evitar borrar fórmulas por error. Si un responsable "
-          "necesita modificar la estructura: Revisar > Desproteger hoja. Vuelva a protegerla al terminar."),
+    ("p", "Las hojas están protegidas sin contraseña para evitar borrar fórmulas por error. Si necesita "
+          "modificar la estructura: Revisar > Desproteger hoja. Vuelva a protegerla al terminar."),
 
-    ("h2", "2. Configuración inicial (una sola vez, la hace el económico o el contador)"),
+    ("h2", "2. Configuración inicial (una sola vez)"),
     ("n", "PARAMETROS: escriba el nombre de la empresa, el primer mes del período (Fecha_Inicio) y revise las "
           "normas técnicas: litros por viaje, kilómetros, capacidad de los camiones y rendimiento del desagrupe "
           "(kg por jornal). Revise también los porcentajes de reclamaciones, de comisiones bancarias y las tasas tributarias."),
@@ -40,7 +41,7 @@ GUIA = [
           "fijo mensual de cada uno. El total pasa solo a COSTOS_FIJOS."),
     ("n", "Borre los datos de EJEMPLO de las hojas ENTRADA, PRECIOS, ACTIVOS y COMERCIAL. Seleccione las celdas y pulse la tecla Supr. NUNCA elimine filas ni columnas."),
 
-    ("h2", "3. Registro de cada contenedor (hoja ENTRADA). Lo hace el especialista de operaciones"),
+    ("h2", "3. Registro de cada contenedor (hoja ENTRADA)"),
     ("p", "Use una fila por contenedor. Los datos se registran en dos momentos:"),
     ("n", "Al recibir el contenedor: ID del contenedor, fecha de arribo, transitaria (ENCI o A.V), tipo, número de "
           "bultos y kg que van a cada región (Occidente, Centro, Oriente), según el manifiesto o desglose. "
@@ -54,7 +55,7 @@ GUIA = [
     ("b", "Las columnas «Alertas» y «Utilidad» al final de la fila muestran el resultado al instante."),
     ("b", "Cada importe debe tener un documento que lo respalde: factura, vale, nómina o comprobante. Anote el número del documento en Observaciones."),
 
-    ("h2", "4. Cierre mensual (lo hace el económico el primer día hábil del mes siguiente)"),
+    ("h2", "4. Cierre mensual (el primer día hábil del mes siguiente)"),
     ("n", "Compruebe que todos los contenedores del mes estén en «Cerrado» y sin alertas pendientes."),
     ("n", "En COSTOS_FIJOS, si algún gasto fijo real del mes fue distinto del valor base, escriba el valor real en la "
           "celda de ese mes. Esa celda sustituye la fórmula solo para ese mes."),
@@ -106,7 +107,7 @@ GUIA = [
     ("b", "Nunca elimine filas ni columnas. Para borrar datos, seleccione las celdas y pulse Supr."),
     ("b", "Escriba solo en las celdas amarillas. No copie y pegue formatos desde otros archivos: use «Pegar valores»."),
     ("b", "Escriba los números sin texto: 60, no «60 L». Escriba las fechas como dd/mm/aaaa."),
-    ("b", "Un solo responsable por hoja: operaciones (ENTRADA), economía (PRECIOS, COSTOS_FIJOS, COMERCIAL), dirección (lectura)."),
+    ("b", "Trabaje siempre sobre un único archivo maestro. No haga copias de trabajo paralelas: las copias con fecha son solo respaldos."),
     ("b", "Haga una copia de respaldo semanal y otra en cada cierre mensual."),
     ("b", "El libro admite 300 contenedores en ENTRADA y 24 meses. Al llegar al límite, guarde el archivo como "
           "histórico y empiece uno nuevo con Fecha_Inicio actualizada."),
@@ -240,9 +241,9 @@ ANALISIS = [
            ["Gastos fijos y salarios", "Valores de COSTOS_FIJOS", "ILUSTRATIVOS: sustituir por los registros contables"]]),
 
     ("h2", "8. Plan de implantación"),
-    ("n", "Semana 1: el económico carga PRECIOS, ACTIVOS, COSTOS_FIJOS y COMERCIAL con datos reales y borra los ejemplos."),
-    ("n", "Semanas 2 a 4: operaciones registra los contenedores del mes en curso y, si hay datos, de los 2 o 3 meses anteriores."),
+    ("n", "Semana 1: el responsable del libro carga PRECIOS, ACTIVOS, COSTOS_FIJOS y COMERCIAL con datos reales y borra los ejemplos."),
+    ("n", "Semanas 2 a 4: el responsable registra los contenedores del mes en curso y, si hay datos, de los 2 o 3 meses anteriores."),
     ("n", "Mes 1: se miden en la práctica las normas de combustible y de desagrupe, y se ajusta PARAMETROS."),
-    ("n", "Mes 2: primer cierre mensual con conciliación de la comercialización. La dirección analiza la tarifa mínima por región."),
+    ("n", "Mes 2: primer cierre mensual con conciliación de la comercialización. Se presenta a la dirección la tarifa mínima por región (SIMULADOR)."),
     ("n", "Mes 3: decisión sobre las tarifas diferenciadas y la consolidación de viajes. Se revisa el resultado frente a la contabilidad oficial."),
 ]

@@ -1,0 +1,233 @@
+% ============================================================================
+\chapter{Conozca el libro, hoja por hoja}\label{cap:conozca}
+% ============================================================================
+
+Este capítulo es un recorrido. Todavía no hay que escribir nada: abra el libro y vaya mirando cada hoja a medida que la lee.
+
+\section{La regla de oro: los colores}
+
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{@{}lXc@{}}
+\toprule
+\textbf{Aspecto} & \textbf{Qué es} & \textbf{¿Escribo?} \\ \midrule
+\entradaejemplo{} fondo amarillo, letra azul & Dato que usted escribe & \textbf{\color{verde}SÍ} \\
+\textbf{1.234} letra negra & Fórmula: se calcula sola & \textbf{\color{rojo}NO} \\
+\textcolor{enlace}{1.234} letra verde & Dato traído de otra hoja & \textbf{\color{rojo}NO} \\
+\colorbox{azul}{\textcolor{white}{\bfseries Título}} fondo azul & Títulos de columnas & \textbf{\color{rojo}NO} \\
+\textcolor{red}{(\$114)} rojo entre paréntesis & Número negativo: pérdida & \textbf{\color{rojo}NO} \\
+\textbf{-} un guion & Cero & --- \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{nota}
+Los colores se repiten en todas las hojas. Si duda si puede escribir en una celda, mire su color: \textbf{solo en las amarillas}.
+\end{nota}
+
+% ---------------------------------------------------------------- INICIO
+\section{\hoja{INICIO}: la portada y el tablero de control}
+
+Es la primera hoja que verá al abrir el libro.
+
+\captura{inicio_indice}{Hoja INICIO: índice de hojas}
+\begin{itemize}
+  \item \recuadro{1} \textbf{Nombres de las hojas}, en azul subrayado: son \textbf{enlaces}. Haga clic en uno y Excel lo lleva a esa hoja.
+  \item \recuadro{2} \textbf{Cuándo se usa} cada hoja.
+\end{itemize}
+
+\captura{inicio_rutina}{Hoja INICIO: su rutina de trabajo y la leyenda de colores}
+\recuadro{1} Su \textbf{rutina de trabajo}: el resumen de los cuatro momentos de la sección anterior.
+
+\captura{inicio_controles}{Hoja INICIO: controles automáticos}
+\recuadro{1} \textbf{Estado del libro}. Revíselo siempre antes de dar un mes por terminado:
+\begin{itemize}
+  \item \textbf{Contenedores registrados}, \textbf{con alertas} y \textbf{abiertos} (pendientes de cerrar).
+  \item \textbf{Cuadre de regiones} y \textbf{cuadre mensual}: deben decir \textcolor{verde}{\textbf{OK}}. Si dicen \textcolor{rojo}{\textbf{REVISAR}},
+        consulte el capítulo~\ref{cap:problemas}.
+  \item \textbf{Conciliación de comercialización}: debe decir \textcolor{verde}{\textbf{CUADRA}} después del cierre de mes.
+  \item \textbf{Utilidad antes de impuesto acumulada}: con los datos de ejemplo, \vUAItotal.
+\end{itemize}
+
+% ---------------------------------------------------------------- ENTRADA
+\section{\hoja{ENTRADA}: donde registra cada contenedor}
+
+Es la hoja que usará casi todos los días. \textbf{Cada fila es un contenedor}. Hay espacio para 300, de la fila 6 a la 305.
+
+\captura{entrada_izq}{Hoja ENTRADA, primera parte (columnas A a L)}
+\begin{itemize}
+  \item \textbf{A – Nº}: se numera solo al escribir el ID.
+  \item \recuadro{1} \textbf{B – ID contenedor}: el número del contenedor o del BL. \textbf{Es obligatorio}: una fila sin ID no se calcula.
+  \item \recuadro{2} \textbf{C – Fecha de arribo}, \textbf{D – Transitaria} (lista: ENCI, A.V, Otra), \textbf{E – Tipo} (lista) y
+        \textbf{F – Nº de bultos} (informativo).
+  \item \recuadro{3} \textbf{G, H, I – kg por región}: cuántos kilogramos van a Occidente, a Centro y a Oriente. Salen del manifiesto o
+        del desglose por destinatario. \textbf{Son el dato más importante}: de ellos dependen los ingresos.
+  \item \recuadro{4} \textbf{J a U – columnas «(opcional)»}: los datos reales de cada etapa (viajes, litros, dieta, jornales). Si las deja vacías,
+        el libro usa la \textbf{norma técnica}, el valor estándar de \hoja{PARAMETROS}. Por ejemplo, 60 litros por viaje al puerto.
+\end{itemize}
+
+\captura{entrada_der}{Hoja ENTRADA, parte final (columnas V a AC)}
+\begin{itemize}
+  \item \textbf{V–W}: otros gastos directos del contenedor y su detalle. \textbf{X}: otros ingresos (entregas a domicilio, sobrepeso\dots).
+  \item \recuadro{1} \textbf{Y – Fecha de fin de la distribución} y \textbf{Z – Estado}: «Abierto» mientras falten datos; «Cerrado» al completarlos.
+        \textbf{AA – Observaciones}: anote aquí los números de los documentos de soporte.
+  \item \recuadro{2} \textbf{AB – Alertas} y \textbf{AC – Utilidad}: \textbf{se calculan solas}. Le dicen al instante si algo está mal y cuánto deja
+        el contenedor. Aquí el contenedor 3 tiene la alerta «\vAlertaTres».
+\end{itemize}
+
+La lista completa de columnas, con el documento de donde sale cada dato, está en el anexo~\ref{anx:columnas}.
+
+% ---------------------------------------------------------------- PARAMETROS
+\section{\hoja{PARAMETROS}: normas técnicas y tasas}
+
+Datos estables que se configuran una vez y casi no cambian.
+
+\captura[0.8\linewidth]{parametros}{Hoja PARAMETROS (columnas B a D; la E trae la explicación de cada dato)}
+\begin{itemize}
+  \item \recuadro{1} \textbf{Generales}: nombre de la empresa, primer mes del período (\texttt{Fecha\_Inicio}), forma de repartir los gastos
+        fijos (por kg, recomendado), base de la comisión variable, tolerancia del combustible (10\,\%) y mes de corte (opcional).
+  \item \recuadro{2} \textbf{Normas técnicas}: litros por viaje de cada tramo, kilómetros al puerto, capacidad de los camiones y
+        rendimiento del desagrupe (kg que desagrupa un trabajador en una jornada).
+  \item Más abajo: los \textbf{porcentajes sobre el ingreso} (reclamaciones y banca) y los \textbf{tributos}.
+\end{itemize}
+En el libro, la columna E explica cada dato y dice si es un valor ILUSTRATIVO que hay que sustituir.
+
+% ---------------------------------------------------------------- PRECIOS
+\section{\hoja{PRECIOS}: tarifas y precios con fecha}
+
+Aquí están los precios que cambian con el tiempo. La hoja es ancha, así que se muestra en dos imágenes.
+
+\captura{precios}{Hoja PRECIOS, columnas A a I}
+\begin{itemize}
+  \item \recuadro{1} \textbf{Vigente desde}: la fecha desde la que rigen los precios de esa fila.
+  \item \recuadro{2} Tarifas por kg de cada región, diésel, cita, dieta y pago por jornal.
+\end{itemize}
+
+\captura{precios_b}{Hoja PRECIOS, columnas J a O}
+\recuadro{1} Servicios de las transitarias, comisiones de los gestores y desgaste del camión. \recuadro{2} El documento de soporte del cambio de precio.
+
+\begin{atencion}
+\textbf{Cuando un precio cambia, no borre la fila anterior: agregue una fila nueva debajo} con la nueva fecha. Cada contenedor usa
+los precios vigentes en su fecha de arribo, así que los contenedores anteriores conservan su costo real. Lo practicará en el ejercicio~4.
+\end{atencion}
+
+% ---------------------------------------------------------------- ACTIVOS
+\section{\hoja{ACTIVOS}: el camión y los equipos}
+
+\captura{activos}{Hoja ACTIVOS, columnas A a J}
+\begin{itemize}
+  \item \recuadro{1} Lo que usted escribe: descripción, tipo, fecha de alta, valor de compra, valor residual (lo que valdrá al final de su vida
+        útil) y vida útil en años.
+  \item \recuadro{2} Lo que calcula el libro: depreciación anual y mensual, y fecha en que termina de depreciarse.
+\end{itemize}
+
+\captura{activos_b}{Hoja ACTIVOS, columnas K a O}
+\recuadro{1} Fecha de baja (si se vende o se retira), mantenimiento preventivo mensual y seguros y licencias anuales.
+
+\begin{nota}
+La \textbf{depreciación} es el desgaste del camión expresado en dinero. Si costó 45\,000 USD, al final valdrá 5\,000 y dura 8 años,
+pierde $(45\,000-5\,000)/8 = 5\,000$ USD al año, es decir, 416,67 USD al mes. Es un gasto real aunque no salga dinero de la caja:
+cuando haya que reponer el camión, habrá que tener ese dinero.
+\end{nota}
+
+% ---------------------------------------------------------------- COSTOS FIJOS
+\section{\hoja{COSTOS\_FIJOS}: los gastos de cada mes}
+
+Los \textbf{gastos fijos} son los que se pagan aunque no llegue ningún contenedor: salarios de oficina, alquiler, electricidad,
+servicios contratados de chofer y ayudante, depreciación\dots
+
+\captura{costos_fijos}{Hoja COSTOS\_FIJOS: conceptos, valor base y meses}
+\begin{itemize}
+  \item \textbf{C – Centro de costo}: GENERAL, si es de toda la empresa, u OCC/CEN/ORI, si es de una región.
+        Los gastos de una región solo se cargan a los kg de esa región.
+  \item \recuadro{1} \textbf{¿Salario de trabajador propio?}: «Sí» para los salarios de los trabajadores de la empresa. Con eso el libro calcula
+        la seguridad social (14\,\%) y el impuesto por la fuerza de trabajo (5\,\%). «No» para servicios contratados a terceros.
+  \item \recuadro{2} \textbf{Valor base mensual}: lo que se paga normalmente cada mes.
+  \item \recuadro{3} \textbf{Una columna por mes} (24 meses). Cada mes copia el valor base. Si un mes el gasto real fue distinto, escriba el
+        importe real en la celda de ese mes.
+\end{itemize}
+
+\captura{costos_fijos_tot}{Hoja COSTOS\_FIJOS: tributos sobre salarios y totales}
+\recuadro{1} Los tributos sobre salarios se calculan solos. \recuadro{2} Los totales por centro de costo y el
+\textbf{total de costos fijos del mes}: \vFijosMes{} en el ejemplo.
+
+% ---------------------------------------------------------------- COMERCIAL
+\section{\hoja{COMERCIAL}: los 21 gestores}
+
+\captura{comercial}{Hoja COMERCIAL: datos del mes y lista de gestores}
+\begin{itemize}
+  \item \recuadro{1} \textbf{Mes a liquidar}: el mes del que va a calcular el pago.
+  \item Lista de los 21 gestores: 5 del grupo central y 16 provinciales, uno por territorio.
+  \item \recuadro{2} \textbf{F – Pago fijo mensual} (igual para todos; viene de la celda \celda{C8}) y \textbf{G – Base variable del mes}: lo que
+        gestionó cada uno, en USD cobrados o en kg, según la base elegida en \hoja{PARAMETROS}.
+  \item \textbf{H} e \textbf{I}: pago variable y total a pagar, calculados.
+\end{itemize}
+
+\captura{comercial_conc}{Hoja COMERCIAL: conciliación}
+\recuadro{1} \textbf{Conciliación}: compara lo que declaran los gestores con lo que dicen los contenedores registrados. Si coinciden,
+dice \textcolor{verde}{\textbf{CUADRA}}. Si no, \textcolor{rojo}{\textbf{REVISAR}}. Lo practicará en el ejercicio~5.
+
+% ---------------------------------------------------------------- CALCULO
+\section{\hoja{CALCULO}: las cuentas, a la vista (solo consulta)}
+
+Aquí el libro hace todas las cuentas de cada contenedor, en unas 95 columnas. \textbf{No se escribe nada}, pero puede consultarla para
+entender de dónde sale un resultado. Las imágenes muestran solo algunas columnas.
+
+\captura{calculo}{Hoja CALCULO: algunas columnas clave}
+\recuadro{1} El contenedor 3: sus ingresos, el costo de cada etapa, los costos fijos que le tocan y la utilidad.
+
+\captura{calculo_region}{Hoja CALCULO: utilidad por región, control y alertas}
+\recuadro{1} El contenedor 3 gana en Occidente y en Centro, pero pierde en Oriente. El \textbf{control de cuadre} vale 0 (aparece
+como «-»): la suma de las tres regiones es igual a la utilidad del contenedor.
+
+% ---------------------------------------------------------------- RESUMEN
+\section{\hoja{RESUMEN\_MES}: el resultado de cada mes}
+
+\captura{resumen}{Hoja RESUMEN\_MES: columnas principales (se ocultaron algunas para que se lea mejor)}
+\recuadro{1} Una fila por mes. \recuadro{2} \textbf{Utilidad antes de impuesto} del mes: \vUAIsep{} en septiembre y \vUAIoct{} en octubre,
+con los datos de ejemplo. Noviembre no carga gastos porque todavía no ha ocurrido: es posterior al «mes de corte».
+
+\captura{resumen_pe}{Hoja RESUMEN\_MES: indicadores por kg y punto de equilibrio}
+\recuadro{1} \textbf{Punto de equilibrio} y \textbf{margen de seguridad}. En septiembre bastaban \vPEsep{} kg (\vPEcontSep{} contenedores)
+para cubrir todos los gastos. El capítulo~\ref{cap:resultados} explica cada indicador.
+
+% ---------------------------------------------------------------- DASHBOARD
+\section{\hoja{DASHBOARD}: el panel para informar}
+
+\captura{dashboard_kpi}{DASHBOARD: período e indicadores}
+\recuadro{1} Elija el \textbf{período}: mes «desde» y mes «hasta», con la flecha de la lista. \recuadro{2} Utilidad antes de impuesto,
+impuesto estimado y utilidad neta del período. Los demás indicadores se explican en el capítulo~\ref{cap:resultados}.
+
+\captura{dashboard_tablas}{DASHBOARD: estructura de costos y rentabilidad por región}
+\recuadro{1} \textbf{Rentabilidad por región}. Con los datos de ejemplo, Occidente gana \vUAIocc, Centro \vUAIcen{} y Oriente
+\textcolor{red}{\vUAIori}, es decir, pierde dinero.
+
+\captura{dashboard_graficos}{DASHBOARD: gráficos}
+
+% ---------------------------------------------------------------- SIMULADOR
+\section{\hoja{SIMULADOR}: «¿qué pasaría si\dots?»}
+
+Sirve para probar escenarios \textbf{sin tocar los datos reales}: subir una tarifa, un aumento del diésel, recibir más contenedores\dots
+
+\captura{simulador_sup}{SIMULADOR: supuestos}
+\recuadro{1} \textbf{Valor actual}: viene de los datos reales del libro. \recuadro{2} \textbf{Valor a simular}: escriba aquí para probar.
+\recuadro{3} \textbf{Valor usado}: el simulado, si escribió uno; si no, el actual.
+
+\captura{simulador_res}{SIMULADOR: resultado de un contenedor típico y del mes}
+\recuadro{1} Utilidad de un contenedor típico por región. \recuadro{2} \textbf{Tarifa mínima de equilibrio} de cada región: por debajo de ese
+precio por kg, la región pierde dinero. Oriente necesita al menos \vSimTminOri{} por kg; Occidente, solo \vSimTminOcc.
+\recuadro{3} Punto de equilibrio: contenedores por mes necesarios para no perder (\vSimPE).
+
+\captura{simulador_sens}{SIMULADOR: sensibilidad a la tarifa y al diésel}
+Cada casilla es la utilidad del mes con una variación de las tarifas (filas) y un precio del diésel (columnas). \recuadro{1} es la situación
+actual: tarifas sin cambio y diésel a 2,00 USD/L, \vSimGrid. Si el diésel sube a 2,50 USD/L, la utilidad baja a \vSimGridMas. Las casillas
+rosadas son pérdidas.
+
+\captura[0.6\linewidth]{simulador_vol}{SIMULADOR: utilidad según la cantidad de contenedores al mes}
+
+% ---------------------------------------------------------------- otras
+\section{Las demás hojas}
+\begin{itemize}
+  \item \hoja{GUIA\_USO}: un resumen de esta guía dentro del propio libro.
+  \item \hoja{ANALISIS}: el diagnóstico del negocio, la metodología y las propuestas de mejora.
+  \item \hoja{LISTAS}: las opciones de las listas desplegables. No se toca.
+\end{itemize}

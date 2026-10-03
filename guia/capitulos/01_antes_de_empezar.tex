@@ -1,0 +1,90 @@
+% ============================================================================
+\chapter{Antes de empezar}
+% ============================================================================
+
+\section{¿Qué hace este libro de Excel?}
+
+El libro responde, de forma automática, a tres preguntas:
+
+\begin{enumerate}
+  \item \textbf{¿Cuánto ganamos o perdemos con cada contenedor?}
+  \item \textbf{¿Qué región deja dinero y cuál no?} (Occidente, Centro y Oriente).
+  \item \textbf{¿Cómo va cada mes?}: si se cubren los gastos fijos, cuántos kilogramos hacen falta para no perder (punto de equilibrio)
+        y cuánto se pagará de impuestos.
+\end{enumerate}
+
+Usted solo escribe los datos de cada contenedor y algunos datos del mes. El libro hace todas las cuentas: más de
+32\,000 fórmulas que ya están escritas y protegidas.
+
+\section{El negocio, tal como lo calcula el libro}
+
+El libro sigue el mismo recorrido que hace la mercancía. Cada etapa tiene sus gastos:
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[
+  etapa/.style={draw=azul,fill=azulclaro,rounded corners=3pt,text width=3.25cm,align=center,minimum height=2.6cm,font=\small},
+  flecha/.style={-{Stealth[length=3mm]},very thick,azul}]
+\node[etapa] (p) {\textbf{1. PUERTO}\\[2pt]Vehículo propio\\\footnotesize cita (10 USD), 60 L de combustible, dieta del chofer, desgaste};
+\node[etapa,right=0.55cm of p] (t) {\textbf{2. TRANSITARIA}\\[2pt]ENCI o A.V\\\footnotesize desagrupe pagado por jornal, estadía};
+\node[etapa,right=0.55cm of t] (d) {\textbf{3. DISTRIBUCIÓN}\\[2pt]Servicio de terceros\\\footnotesize chofer, ayudante, combustible; en Centro y Oriente también traslado y 2.º desagrupe};
+\node[etapa,right=0.55cm of d] (c) {\textbf{4. COMERCIALIZACIÓN}\\[2pt]21 gestores\\\footnotesize pago fijo igual para todos + parte variable};
+\draw[flecha] (p) -- (t); \draw[flecha] (t) -- (d); \draw[flecha] (d) -- (c);
+\node[below=0.35cm of t.south east,anchor=north,text width=14cm,align=center,font=\small\color{gris}]
+ {Además: gastos fijos del mes (oficina, salarios, alquiler, depreciación del camión…) y tributos (10\,\% ventas y servicios,
+ 1\,\% territorial, 14\,\% seguridad social, 5\,\% fuerza de trabajo y 35\,\% utilidades).};
+\end{tikzpicture}
+\caption{Recorrido de la mercancía y gastos de cada etapa}
+\end{figure}
+
+Con los ingresos (kilogramos $\times$ tarifa por kg de cada región) y todos esos gastos, el libro calcula la
+\textbf{utilidad} (ganancia) de cada contenedor, de cada región y de cada mes.
+
+\section{Qué necesita}
+
+\begin{itemize}
+  \item Una computadora con \textbf{Microsoft Excel 2010 o más reciente}. También funciona con LibreOffice Calc (gratuito).
+  \item El archivo \libro. No tiene macros, así que no hace falta «habilitar contenido».
+  \item Los documentos de cada contenedor: manifiesto o desglose por destino, vales de combustible, hojas de ruta,
+        comprobantes de pago de la cita, de la dieta y de los jornales.
+  \item Para el cierre del mes: facturas y nóminas de los gastos fijos y lo cobrado por cada gestor.
+\end{itemize}
+
+\section{Su papel: una sola persona lleva el libro}
+
+Todo el libro lo lleva \textbf{una sola persona}: usted. Eso simplifica las cosas, pero obliga a tener orden.
+Su trabajo se reduce a cuatro momentos, que la propia hoja \hoja{INICIO} le recuerda:
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[
+  caja/.style={draw=azul,rounded corners=3pt,text width=6.6cm,minimum height=1.55cm,align=left,font=\small,inner sep=5pt},
+  tit/.style={font=\small\bfseries\color{white},fill=azul,rounded corners=2pt,inner sep=3pt}]
+\node[caja] (a) {\textbf{Una sola vez}, al empezar.\\Cargar sus datos reales y borrar los ejemplos. \hfill\textit{Capítulo \ref{cap:preparar}}};
+\node[caja,right=0.5cm of a] (b) {\textbf{Con cada contenedor}, en dos momentos:\\al llegar y al terminar la distribución. \hfill\textit{Capítulo \ref{cap:diario}}};
+\node[caja,below=0.45cm of a] (c) {\textbf{Cada fin de mes}: revisar, completar gastos reales, liquidar a los gestores y guardar una copia. \hfill\textit{Capítulo \ref{cap:cierre}}};
+\node[caja,below=0.45cm of b] (d) {\textbf{Cuando algo cambia}: un precio, un vehículo, un gestor, un impuesto. \hfill\textit{Capítulo \ref{cap:cambios}}};
+\end{tikzpicture}
+\caption{Los cuatro momentos de trabajo con el libro}
+\end{figure}
+
+\begin{consejo}
+Como nadie más revisa sus anotaciones, el libro trae \textbf{controles automáticos} que hacen de «segunda persona».
+Avisan si falta un dato, si el combustible se pasa de la norma o si algo no cuadra. Consúltelos siempre en la hoja
+\hoja{INICIO} antes de dar un mes por cerrado.
+\end{consejo}
+
+\section{Ruta de aprendizaje recomendada}
+
+\begin{enumerate}
+  \item Si nunca ha usado Excel, lea el capítulo~\ref{cap:excel} (unos 20 minutos).
+  \item Recorra el libro con el capítulo~\ref{cap:conozca}, que explica qué hace cada hoja, con imágenes.
+  \item Haga \textbf{los 8 ejercicios del capítulo~\ref{cap:taller}} sobre una copia de práctica. Es la parte más importante:
+        al terminar habrá hecho, una vez, todo lo que hará en su trabajo real.
+  \item Prepare el libro con sus datos reales (capítulo~\ref{cap:preparar}) y empiece a trabajar.
+  \item Los capítulos \ref{cap:diario} a \ref{cap:problemas} y los anexos son material de consulta para el día a día.
+\end{enumerate}
+
+\begin{atencion}
+\textbf{Los datos que trae el libro son de EJEMPLO}: 4 contenedores de septiembre y octubre de 2026, una tarifa de 0,80 USD/kg y
+salarios y normas inventados. Sirven para aprender y para los ejercicios. Antes de usar el libro de verdad hay que sustituirlos
+siguiendo el capítulo~\ref{cap:preparar}. Solo son datos reales de la empresa la cita de 10 USD y los 60 litros por viaje al puerto.
+\end{atencion}

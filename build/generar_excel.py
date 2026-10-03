@@ -424,7 +424,10 @@ ACT_SUM = {
 for i, (code, desc, pool, elem, sal, base) in enumerate(CONCEPTOS):
     rr = CF0 + i
     put(cf, f"A{rr}", code, border=True)
-    put(cf, f"B{rr}", desc, border=True)
+    if base in ACT_SUM or code == "CF03":
+        put(cf, f"B{rr}", desc, border=True)
+    else:
+        inp(cf, f"B{rr}", desc)
     inp(cf, f"C{rr}", pool)
     inp(cf, f"D{rr}", elem)
     inp(cf, f"E{rr}", sal)
@@ -1403,7 +1406,7 @@ protect(an)
 ini = sheet("INICIO", "1F3864")
 wb.move_sheet("INICIO", offset=-(len(wb.sheetnames) - 1))
 ini.column_dimensions["A"].width = 3
-widths(ini, {"B": 38, "C": 70, "D": 18})
+widths(ini, {"B": 38, "C": 70, "D": 28})
 put(ini, "B2", "ANÁLISIS DE RENTABILIDAD – NEGOCIO DE PAQUETERÍA", F_TITLE)
 put(ini, "B3", '=Empresa&"  ·  Modelo por contenedor, por región y por mes  ·  Importes en USD"', F_SUB)
 put(ini, "B5", "Flujo modelado", F_H2)
@@ -1415,21 +1418,21 @@ ini.row_dimensions[6].height = 45
 put(ini, "B8", "Hojas del libro", F_H2)
 hdr(ini, "B9", "Hoja")
 hdr(ini, "C9", "Contenido")
-hdr(ini, "D9", "Quién la usa")
+hdr(ini, "D9", "Cuándo se usa")
 HOJAS = [
-    ("GUIA_USO", "Guía paso a paso para el personal. LEER PRIMERO.", "Todos"),
-    ("ANALISIS", "Diagnóstico, metodología, clasificación de costos y propuestas de mejora.", "Dirección"),
-    ("PARAMETROS", "Normas técnicas, porcentajes, tributos y métodos de cálculo.", "Economía"),
-    ("PRECIOS", "Tarifas y precios con fecha de vigencia (historial auditable).", "Economía"),
-    ("ACTIVOS", "Vehículos y equipos: depreciación, mantenimiento y seguros.", "Contabilidad"),
-    ("COSTOS_FIJOS", "Costos fijos mensuales por centro de costo y tributos sobre salarios.", "Economía"),
-    ("COMERCIAL", "21 gestores: pago fijo, liquidación variable y conciliación mensual.", "Economía"),
-    ("ENTRADA", "Registro de contenedores: el único lugar donde operaciones escribe.", "Operaciones"),
-    ("CALCULO", "Cálculo automático completo por contenedor y por región.", "Solo lectura"),
-    ("RESUMEN_MES", "Rentabilidad mensual, punto de equilibrio e impuesto anual estimado.", "Dirección"),
-    ("DASHBOARD", "Panel de indicadores y gráficos del período elegido.", "Dirección"),
-    ("SIMULADOR", "Escenarios: tarifa mínima por región, sensibilidad a la tarifa, al diésel y al volumen.", "Dirección"),
-    ("LISTAS", "Listas de los desplegables (técnica).", "—"),
+    ("GUIA_USO", "Resumen de la guía (la guía completa con imágenes es el PDF que acompaña al libro).", "Antes de empezar"),
+    ("ANALISIS", "Diagnóstico, metodología, clasificación de costos y propuestas de mejora.", "Para decidir"),
+    ("PARAMETROS", "Normas técnicas, porcentajes, tributos y métodos de cálculo.", "Una vez / si cambia una norma"),
+    ("PRECIOS", "Tarifas y precios con fecha de vigencia (historial auditable).", "Una vez / si cambia un precio"),
+    ("ACTIVOS", "Vehículos y equipos: depreciación, mantenimiento y seguros.", "Una vez / al comprar o vender"),
+    ("COSTOS_FIJOS", "Costos fijos mensuales por centro de costo y tributos sobre salarios.", "Una vez / cierre de mes"),
+    ("COMERCIAL", "21 gestores: pago fijo, liquidación variable y conciliación mensual.", "Cierre de mes"),
+    ("ENTRADA", "Registro de contenedores: la hoja donde se trabaja a diario.", "Con cada contenedor"),
+    ("CALCULO", "Cálculo automático completo por contenedor y por región.", "Solo consulta"),
+    ("RESUMEN_MES", "Rentabilidad mensual, punto de equilibrio e impuesto anual estimado.", "Cierre de mes"),
+    ("DASHBOARD", "Panel de indicadores y gráficos del período elegido.", "Para informar"),
+    ("SIMULADOR", "Escenarios: tarifa mínima por región, sensibilidad a la tarifa, al diésel y al volumen.", "Para decidir"),
+    ("LISTAS", "Listas de los desplegables (técnica).", "No se toca"),
 ]
 for i, (h, d, q) in enumerate(HOJAS):
     rr = 10 + i
@@ -1437,7 +1440,21 @@ for i, (h, d, q) in enumerate(HOJAS):
     c.hyperlink = f"#'{h}'!A1"
     put(ini, f"C{rr}", d, border=True, align=WRAP)
     put(ini, f"D{rr}", q, border=True)
-LG = 10 + len(HOJAS) + 1
+RU = 10 + len(HOJAS) + 1
+put(ini, f"B{RU}", "Su rutina de trabajo (una sola persona lleva el libro)", F_H2)
+RUTINA = [
+    ("Una sola vez, al empezar", "PARAMETROS → PRECIOS → ACTIVOS → COSTOS_FIJOS → COMERCIAL. Después, borrar los datos de ejemplo."),
+    ("Con cada contenedor", "ENTRADA: 1) al llegar, ID, fecha, transitaria y kg por región; 2) al terminar la distribución, datos reales y Estado «Cerrado»."),
+    ("Cuando cambia un precio", "PRECIOS: agregar una fila nueva con la fecha desde la que rige. Nunca sobrescribir la anterior."),
+    ("Cada fin de mes", "Revisar alertas en INICIO → gastos reales en COSTOS_FIJOS → liquidación en COMERCIAL → RESUMEN_MES y DASHBOARD → guardar una copia con fecha."),
+]
+for i, (cu, qu) in enumerate(RUTINA):
+    rr = RU + 1 + i
+    put(ini, f"B{rr}", cu, F_BOLD, border=True)
+    ini.merge_cells(f"C{rr}:D{rr}")
+    put(ini, f"C{rr}", qu, border=True, align=WRAP)
+    ini.row_dimensions[rr].height = 28
+LG = RU + len(RUTINA) + 2
 put(ini, f"B{LG}", "Leyenda de colores", F_H2)
 put(ini, f"B{LG + 1}", "1.234", F_INPUT, fmt="#,##0", fill=FILL_INPUT, border=True)
 put(ini, f"C{LG + 1}", "Dato de entrada: se puede escribir (letra azul, fondo amarillo).")
@@ -1466,7 +1483,7 @@ ini.conditional_formatting.add(f"C{ST + 4}:C{ST + 6}", FormulaRule(formula=[f'LE
                                                                   font=Font(name=FONT, bold=True, color="C00000")))
 ini.conditional_formatting.add(f"C{ST + 6}", FormulaRule(formula=[f'C{ST + 6}="CUADRA"'],
                                                          font=Font(name=FONT, bold=True, color="008000")))
-put(ini, f"B{ST + 10}", "Los datos que contiene el libro son de EJEMPLO para mostrar su funcionamiento. Sustitúyalos según la GUIA_USO (sección 2).",
+put(ini, f"B{ST + 10}", "Los datos que contiene el libro son de EJEMPLO para mostrar su funcionamiento. Sustitúyalos siguiendo la guía en PDF (capítulo «Preparar el libro con sus datos»).",
     Font(name=FONT, size=10, bold=True, color="C00000"))
 protect(ini)
 

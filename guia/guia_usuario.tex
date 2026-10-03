@@ -1,0 +1,39 @@
+% ============================================================================
+% GUÍA DE USO — Análisis de rentabilidad del negocio de paquetería
+%
+% Archivo principal. Cada capítulo está en la carpeta capitulos/.
+% Para compilar:  latexmk -pdf guia_usuario.tex   (o: build/construir_guia.sh)
+%
+% · Los números de los ejercicios salen de valores.tex y las imágenes de img/.
+%   Ambos los genera build/capturas.py a partir del Excel: si el Excel cambia,
+%   vuelva a ejecutar ese script y recompile; la guía se actualiza sola.
+% · Los colores y cuadros están en estilo.sty.
+% ============================================================================
+\documentclass[11pt,oneside]{report}
+\usepackage{estilo}
+\input{valores}
+
+\newcommand{\libro}{\textsf{Analisis\_\allowbreak Rentabilidad\_\allowbreak Paqueteria.xlsx}}
+\newcommand{\version}{1.0 · octubre de 2026}
+
+\hypersetup{pdftitle={Guía de uso – Análisis de rentabilidad de paquetería},
+            pdfsubject={Manual paso a paso del libro de Excel}}
+
+\begin{document}
+\input{capitulos/00_portada}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage\pagenumbering{arabic}
+\input{capitulos/01_antes_de_empezar}
+\input{capitulos/02_excel_desde_cero}
+\input{capitulos/03_conozca_el_libro}
+\input{capitulos/04_taller_practico}
+\input{capitulos/05_preparar_datos_reales}
+\input{capitulos/06_trabajo_diario}
+\input{capitulos/07_cierre_mensual}
+\input{capitulos/08_cuando_algo_cambia}
+\input{capitulos/09_entender_resultados}
+\input{capitulos/10_problemas}
+\appendix
+\input{capitulos/A_anexos}
+\end{document}

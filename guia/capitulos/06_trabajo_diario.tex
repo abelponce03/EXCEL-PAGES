@@ -1,0 +1,79 @@
+% ============================================================================
+\chapter{El trabajo con cada contenedor}\label{cap:diario}
+% ============================================================================
+
+\section{El ciclo de un contenedor}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[
+  m/.style={draw=azul,fill=azulclaro,rounded corners=3pt,text width=4.3cm,align=center,minimum height=2.1cm,font=\small},
+  f/.style={-{Stealth[length=3mm]},very thick,azul}]
+\node[m] (a) {\textbf{Momento 1: llega}\\[2pt]ID, fecha, transitaria, tipo, bultos y \textbf{kg por región}\\Estado: \textbf{Abierto}};
+\node[m,right=1.1cm of a] (b) {\textbf{Durante la operación}\\[2pt]Guarde los vales, las hojas de ruta y los comprobantes};
+\node[m,right=1.1cm of b] (c) {\textbf{Momento 2: termina}\\[2pt]Datos reales, fecha de fin y documentos\\Estado: \textbf{Cerrado}};
+\draw[f] (a) -- (b); \draw[f] (b) -- (c);
+\end{tikzpicture}
+\caption{Los dos momentos de registro de cada contenedor}
+\end{figure}
+
+\section{Momento 1: cuando llega el contenedor}
+
+\begin{pasos}
+\paso Abra el archivo maestro y vaya a \hoja{ENTRADA}.
+\paso Busque la primera fila vacía: haga clic en \celda{B6} y pulse \tecla{Ctrl}+\tecla{$\downarrow$}. Excel salta al último contenedor
+      registrado; la fila siguiente es la libre. Si la hoja está vacía, use la fila 6.
+\paso Complete de \textbf{B} a \textbf{I}: ID, fecha de arribo, transitaria, tipo, bultos y kg de Occidente, Centro y Oriente.
+\paso En \textbf{Z} ponga \textbf{Abierto}.
+\paso Mire las columnas \textbf{AB} y \textbf{AC}: alertas y primera estimación de la utilidad, con las normas.
+\paso Guarde.
+\end{pasos}
+
+\begin{consejo}
+Si una región no recibe carga en ese contenedor, escriba \escriba{0} en sus kg o déjelos vacíos: el libro no le cargará viajes ni combustible a esa región.
+\end{consejo}
+
+\section{Momento 2: cuando termina la distribución}
+
+\begin{pasos}
+\paso Busque la fila del contenedor. Si hay muchos, use el \textbf{filtro}: en la fila 5, pulse la flecha del título \textbf{Estado}, deje marcado
+      solo «Abierto» y pulse \boton{Aceptar}. Para volver a verlos todos, vuelva a la flecha y elija «Seleccionar todo».
+\paso Con los documentos delante, escriba los datos reales en las columnas opcionales (J a U), en la estadía (N) y en otros gastos e ingresos (V a X).
+\paso Escriba la \textbf{fecha de fin} (Y), cambie el \textbf{Estado} (Z) a \textbf{Cerrado} y anote los documentos (AA).
+\paso Revise la alerta (AB). Si aparece, investíguela (sección~\ref{sec:ej3}).
+\paso Guarde.
+\end{pasos}
+
+\section{Qué escribir en cada columna opcional}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Col.} & \textbf{Dato} & \textbf{Qué escribir} \\ \midrule
+J & Viajes al puerto & Cuántas veces fue el camión propio al puerto por este contenedor (normalmente 1). \\
+K & Litros reales al puerto & El \textbf{total} de litros de esos viajes, según los vales. \\
+L & Dieta pagada & El \textbf{total} pagado de dieta al chofer, en USD. \\
+M & Jornales del desagrupe & Trabajadores $\times$ días. Ejemplo: 4 trabajadores durante 3 días = \escriba{12}. \\
+N & Estadía / almacenaje & Lo que cobró la naviera o la transitaria por pasarse de los días libres. \\
+O & Litros de distribución en Occidente & Total de litros de la distribución en Occidente. \\
+P / S & Litros de traslado a Centro / Oriente & Total de litros del viaje hasta el centro transitorio. \\
+Q / T & Litros de distribución en Centro / Oriente & Total de litros de la distribución desde el centro transitorio. \\
+R / U & Jornales del centro transitorio & Trabajadores $\times$ días del desagrupe en el centro transitorio de esa región. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{atencion}
+Escriba \textbf{totales del contenedor}, no valores por viaje: si hubo 2 viajes de 250 L a Centro, escriba \escriba{500} en P.
+Si no conoce un dato real, deje la celda \textbf{vacía}, nunca con 0: un 0 significa «no se gastó nada» y daría una utilidad falsa.
+\end{atencion}
+
+\section{Casos especiales}
+
+\begin{description}[style=nextline,leftmargin=1.2em]
+  \item[Corregir un contenedor ya cerrado] Corrija la celda equivocada. Todo se recalcula solo. Anote la corrección en Observaciones.
+  \item[Un contenedor de otro mes que llega tarde al registro] Regístrelo con su fecha real de arribo. Cambiará el reparto de los gastos fijos de ese mes,
+        lo cual es correcto.
+  \item[Gastos del contenedor que no tienen columna] Use «Otros gastos directos» (V) y explíquelos en «Detalle» (W).
+  \item[Ingresos extra] Domicilios, sobrepeso, etc.: use «Otros ingresos» (X).
+  \item[Contenedor que va a una sola región] Ponga todos sus kg en esa región y deje las otras vacías.
+\end{description}

@@ -1,0 +1,68 @@
+% ============================================================================
+\chapter{Cuando algo cambia}\label{cap:cambios}
+% ============================================================================
+
+La regla general: \textbf{lo que cambia desde una fecha no debe alterar el pasado}. Cada caso tiene su forma correcta.
+
+\section{Cambia un precio o una tarifa}
+Diésel, tarifa por kg, cita, dieta, pago por jornal, servicios de transitaria, comisión\dots
+\begin{pasos}
+\paso En \hoja{PRECIOS}, copie la última fila con precios en la fila siguiente vacía.
+\paso Cambie la fecha de la columna A por la fecha desde la que rige el cambio.
+\paso Cambie solo el precio que varió y anote el documento en la columna O.
+\end{pasos}
+Es el ejercicio~4 (sección~\ref{sec:ej4}). Mantenga las fechas \textbf{en orden}, de la más antigua a la más reciente.
+
+\section{Cambia un gasto fijo de forma permanente}
+Por ejemplo, sube el salario de la oficina desde marzo.
+\begin{pasos}
+\paso En \hoja{COSTOS\_FIJOS}, vaya a la fila del concepto y a la columna de \textbf{marzo}.
+\paso Escriba el nuevo importe. Cópielo con \tecla{Ctrl}+\tecla{C}, seleccione las celdas de los meses siguientes y péguelo con \tecla{Ctrl}+\tecla{V}.
+\paso \textbf{No toque el valor base} (columna F): así los meses anteriores conservan el importe antiguo.
+\end{pasos}
+
+\section{Cambia una norma técnica}
+Si después de varios contenedores comprueba que una norma ya no es real (por ejemplo, el camión consume 70 L y no 60), cámbiela en \hoja{PARAMETROS}.
+La norma solo afecta a las celdas opcionales que estén \textbf{vacías}. Por eso conviene escribir siempre los litros reales: así un cambio de norma
+nunca altera el pasado.
+
+\section{Se compra, se vende o se retira un vehículo o equipo}
+\begin{itemize}
+  \item \textbf{Compra}: agréguelo en una fila libre de \hoja{ACTIVOS} con su fecha de alta. La depreciación empieza ese mes.
+  \item \textbf{Venta o retiro}: escriba la \textbf{fecha de baja} en la columna K. Desde el mes siguiente deja de depreciarse y de cargar mantenimiento.
+        \textbf{No borre la fila}: los meses anteriores la necesitan.
+\end{itemize}
+
+\section{Cambia un gestor}
+\begin{itemize}
+  \item \textbf{Sustitución} en el mismo territorio: cambie el nombre en la columna B de \hoja{COMERCIAL}.
+  \item \textbf{Cambio de pago fijo para todos}: para que no cambien los meses anteriores, siga la sección «Cambia un gasto fijo de forma
+        permanente»: escriba el nuevo total de la fila 8 de \hoja{COSTOS\_FIJOS} en los meses desde el cambio. Luego actualice \celda{C8} de \hoja{COMERCIAL}.
+\end{itemize}
+
+\section{Cambian los impuestos}
+Actualice las tasas en \hoja{PARAMETROS} (sección D) \textbf{después de confirmarlo con el contador}.
+
+\begin{atencion}
+Las tasas de \hoja{PARAMETROS} se aplican a \textbf{todos} los meses del libro. Si cambian a mitad de año, guarde antes una copia del libro con
+las tasas antiguas como histórico, o anote el cambio para tenerlo en cuenta en la liquidación anual.
+\end{atencion}
+
+\section{Se llena el libro: nuevo período}
+El libro admite \textbf{24 meses} y \textbf{300 contenedores}. Al acercarse a cualquiera de los dos límites:
+\begin{pasos}
+\paso Haga un respaldo y guarde el archivo como histórico, por ejemplo \escribal{Rentabilidad\_\allowbreak HISTORICO\_\allowbreak 2026-2027.xlsx}.
+\paso Haga una copia como nuevo maestro.
+\paso En el nuevo maestro, cambie \texttt{Fecha\_Inicio} en \hoja{PARAMETROS} al primer mes del nuevo período.
+\paso Borre los contenedores de \hoja{ENTRADA} (con \tecla{Supr}) y revise que \hoja{PRECIOS}, \hoja{ACTIVOS} y \hoja{COSTOS\_FIJOS}
+      tengan los valores vigentes.
+\end{pasos}
+
+\section{Ver o cambiar algo protegido}
+Las hojas están protegidas \textbf{sin contraseña}, solo para evitar errores. Si necesita cambiar algo bloqueado:
+\menu{Revisar $\rightarrow$ Desproteger hoja}. Haga el cambio y vuelva a protegerla con \menu{Revisar $\rightarrow$ Proteger hoja}
+$\rightarrow$ \boton{Aceptar}, sin escribir contraseña.
+
+\begin{atencion}
+Con la hoja desprotegida, las fórmulas se pueden borrar sin querer. Si algo falla después de un cambio así, recupere la última copia de respaldo.
+\end{atencion}

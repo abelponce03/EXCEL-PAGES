@@ -1,0 +1,144 @@
+% ============================================================================
+\chapter{Columnas de la hoja ENTRADA}\label{anx:columnas}
+% ============================================================================
+
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{@{}l>{\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{4.9cm}>{\raggedright\arraybackslash}p{3.6cm}c@{}}
+\toprule
+\textbf{Col.} & \textbf{Nombre} & \textbf{Qué escribir} & \textbf{Documento fuente} & \textbf{Oblig.} \\ \midrule
+\endhead
+A & Nº & Nada: se numera solo & --- & --- \\
+B & ID contenedor & Número del contenedor o del BL & BL / manifiesto & Sí \\
+C & Fecha de arribo & dd/mm/aaaa & Aviso de arribo & Sí \\
+D & Transitaria & ENCI, A.V u Otra (lista) & Documentos de la transitaria & Sí \\
+E & Tipo & 20', 40', 40' HC u Otro (lista) & BL & No \\
+F & Nº de bultos & Cantidad de bultos & Manifiesto & No \\
+G & kg Occidente & kg con destino a Occidente & Desglose por destinatario & Sí \\
+H & kg Centro & kg con destino a Centro & Desglose por destinatario & Sí \\
+I & kg Oriente & kg con destino a Oriente & Desglose por destinatario & Sí \\
+J & Viajes al puerto & Nº de viajes del camión propio & Hoja de ruta & Opc. \\
+K & Litros reales al puerto & Total de litros & Vales de combustible & Opc. \\
+L & Dieta pagada & Total en USD & Comprobante de dieta & Opc. \\
+M & Jornales del desagrupe & Trabajadores $\times$ días & Nómina / control de asistencia & Opc. \\
+N & Estadía / almacenaje & USD cobrados por demora & Factura de la naviera o de la transitaria & No \\
+O & Litros distribución Occidente & Total de litros & Vales / hoja de ruta & Opc. \\
+P & Litros traslado a Centro & Total de litros & Vales / hoja de ruta & Opc. \\
+Q & Litros distribución Centro & Total de litros & Vales / hoja de ruta & Opc. \\
+R & Jornales centro transitorio Centro & Trabajadores $\times$ días & Nómina / asistencia & Opc. \\
+S & Litros traslado a Oriente & Total de litros & Vales / hoja de ruta & Opc. \\
+T & Litros distribución Oriente & Total de litros & Vales / hoja de ruta & Opc. \\
+U & Jornales centro transitorio Oriente & Trabajadores $\times$ días & Nómina / asistencia & Opc. \\
+V & Otros gastos directos & USD & Factura / comprobante & No \\
+W & Detalle de otros gastos & Texto breve & --- & No \\
+X & Otros ingresos & USD & Factura emitida & No \\
+Y & Fecha de fin de la distribución & dd/mm/aaaa & Última entrega & No \\
+Z & Estado & Abierto o Cerrado (lista) & --- & Sí \\
+AA & Observaciones & Números de documentos, explicaciones & --- & No \\
+AB & Alertas & Nada: automático & --- & --- \\
+AC & Utilidad antes de impuesto & Nada: automático & --- & --- \\
+\bottomrule
+\end{longtable}
+\noindent\textbf{Opc.} = opcional: si se deja vacía, se usa la norma técnica de \hoja{PARAMETROS}.
+
+% ============================================================================
+\chapter{Glosario}\label{anx:glosario}
+% ============================================================================
+
+\begin{description}[style=nextline,leftmargin=1.2em,itemsep=4pt]
+\item[Absorción (costeo por)] Repartir los gastos fijos entre los contenedores para conocer su costo completo.
+\item[Alerta] Aviso automático de que falta un dato o de que algo se sale de lo normal.
+\item[Celda] Cada casilla de una hoja, nombrada por su columna y su fila, como \celda{C5}.
+\item[Centro de costo] Grupo al que se asigna un gasto: GENERAL, Occidente, Centro u Oriente.
+\item[Conciliación] Comparación de dos registros que deberían coincidir: lo que declaran los gestores y lo que dicen las operaciones.
+\item[Costo fijo] Gasto que se paga igual haya o no contenedores: alquiler, salarios de oficina, depreciación\dots
+\item[Costo variable] Gasto que depende de cada contenedor: combustible, jornales, cita, comisión variable\dots
+\item[Depreciación] Pérdida de valor del camión o de un equipo por el uso y el tiempo, repartida por meses.
+\item[Desagrupe] Separar la carga del contenedor por destinatario.
+\item[Fijos no absorbidos] Gastos fijos de un mes que ningún contenedor cubrió.
+\item[Jornal] Un día de trabajo de una persona. 4 personas durante 3 días son 12 jornales.
+\item[Margen de contribución] Ingresos menos costos variables.
+\item[Margen de seguridad] Cuánto pueden bajar las ventas antes de tener pérdidas.
+\item[Norma técnica] Consumo considerado normal (litros por viaje, kg por jornal\dots). Se usa cuando falta el dato real y para generar alertas.
+\item[Período] Los 24 meses que abarca el libro, desde \texttt{Fecha\_Inicio}.
+\item[Prorrateo] Reparto proporcional de un gasto, por ejemplo según los kg.
+\item[Punto de equilibrio] Volumen con el que los ingresos cubren exactamente todos los gastos: ni se gana ni se pierde.
+\item[Tarifa mínima de equilibrio] Precio por kg más bajo con el que una región no pierde dinero.
+\item[UAI] Utilidad antes del impuesto sobre utilidades.
+\item[Vigencia] Período durante el que rige un precio. Empieza en la fecha de su fila en \hoja{PRECIOS}.
+\end{description}
+
+% ============================================================================
+\chapter{Lista de comprobación mensual (para imprimir)}\label{anx:checklist}
+% ============================================================================
+
+\noindent Mes que se cierra: \rule{5cm}{0.4pt} \hfill Fecha del cierre: \rule{4cm}{0.4pt}
+
+\bigskip
+\renewcommand{\arraystretch}{2.0}
+\begin{tabularx}{0.96\linewidth}{@{}c>{\raggedright\arraybackslash}X p{3.4cm}@{}}
+\toprule
+& \textbf{Tarea} & \textbf{Observaciones} \\ \midrule
+$\square$ & Todos los contenedores del mes registrados y en «Cerrado» (\hoja{ENTRADA}) & \\
+$\square$ & Alertas resueltas o explicadas & \\
+$\square$ & Gastos fijos reales del mes escritos (\hoja{COSTOS\_FIJOS}) & \\
+$\square$ & Cambios de precio registrados como filas nuevas (\hoja{PRECIOS}) & \\
+$\square$ & Base variable de los 21 gestores escrita (\hoja{COMERCIAL}) & \\
+$\square$ & Conciliación de comercialización: CUADRA o diferencia explicada & \\
+$\square$ & Cuadres de \hoja{INICIO}: OK y OK & \\
+$\square$ & Resultado revisado: utilidad, costo/kg, equilibrio, regiones & \\
+$\square$ & Informe del \hoja{DASHBOARD} exportado a PDF & \\
+$\square$ & Archivo guardado y copia de respaldo hecha (USB, correo o nube) & \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1cm}
+\noindent Utilidad antes de impuesto del mes: \rule{4cm}{0.4pt}\hfill Contenedores del mes: \rule{3cm}{0.4pt}
+
+\vspace{14pt}
+\noindent Firma: \rule{5cm}{0.4pt}
+
+% ============================================================================
+\chapter{Cómo actualizar esta guía}\label{anx:mantener}
+% ============================================================================
+
+Esta guía está escrita en LaTeX para que cualquier cambio sea sencillo y la guía siga siempre coherente con el libro de Excel.
+
+\section{Dónde está cada cosa}
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\toprule
+\textbf{Archivo} & \textbf{Contenido} \\ \midrule
+\texttt{guia/guia\_usuario.tex} & Archivo principal: portada, orden de los capítulos y versión (\verb|\version|). \\
+\texttt{guia/capitulos/*.tex} & Un archivo por capítulo. Para cambiar un texto, edite el capítulo correspondiente. \\
+\texttt{guia/estilo.sty} & Colores, cuadros (nota, atención, consejo, resultado) y comandos (\verb|\hoja|, \verb|\celda|, \verb|\escriba|\dots). \\
+\texttt{guia/valores.tex} & Números de los ejercicios. \textbf{Se genera solo}: no lo edite a mano. \\
+\texttt{guia/img/} & Capturas del libro. \textbf{Se generan solas}. \\
+\texttt{build/capturas.py} & Define los ejercicios, las capturas (hoja, rango, recuadros) y los valores citados. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Volver a generar la guía}
+Requiere Python con \texttt{openpyxl}, \texttt{lxml} y \texttt{Pillow}, LibreOffice Calc, \texttt{pdftoppm} y una distribución de LaTeX (TeX Live o MiKTeX).
+\begin{verbatim}
+build/construir.sh          # 1. regenera el libro de Excel
+build/construir_guia.sh     # 2. capturas + valores + PDF
+\end{verbatim}
+Si cambia el libro de Excel (una hoja, una columna, una fórmula), ejecute ambos pasos: las imágenes y los números de la guía se actualizan solos.
+Si un cambio mueve una hoja o una columna, ajuste también los rangos de \texttt{build/capturas.py} y las celdas que nombra el texto.
+
+\section{Comandos de la guía}
+\begin{center}
+\begin{tabular}{@{}p{7.2cm}p{8.4cm}@{}}
+\toprule
+\textbf{Escriba en el .tex} & \textbf{Resultado} \\ \midrule
+\verb|\hoja{ENTRADA}| & \hoja{ENTRADA} \\
+\verb|\celda{C5}| & \celda{C5} \\
+\verb|\escriba{5000}| & \escriba{5000} \\
+\verb|\tecla{Enter}| & \tecla{Enter} \\
+\verb|\recuadro{1}| & \recuadro{1} \\
+\verb|\captura{ej2_entrada}{Pie}| & Inserta \texttt{img/ej2\_entrada.png} con su pie de figura \\
+\verb|\begin{resultado}...\end{resultado}| & Cuadro verde «Lo que debe ver si lo hizo bien» \\
+\bottomrule
+\end{tabular}
+\end{center}

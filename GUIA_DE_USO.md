@@ -1,20 +1,20 @@
-# Guía de uso para el personal
+# Guía de uso (resumen)
 
-Este libro calcula de forma automática cuánto gana o pierde la empresa con cada contenedor de paquetería, en cada región y en cada mes. El personal solo escribe datos en las celdas de entrada (amarillas, letra azul). Todo lo demás se calcula con fórmulas.
+Este libro calcula de forma automática cuánto gana o pierde la empresa con cada contenedor de paquetería, en cada región y en cada mes. Lo lleva UNA sola persona, que solo escribe datos en las celdas de entrada (amarillas, letra azul). Todo lo demás se calcula con fórmulas. La guía completa, con imágenes y ejercicios paso a paso, es el PDF «Guia_de_Uso_Rentabilidad_Paqueteria.pdf» que acompaña a este archivo.
 
 ## 1. Colores y convenciones
 
 | Aspecto de la celda | Significado | ¿Se puede escribir? |
 |---|---|---|
-| Fondo amarillo claro, letra azul | Dato de entrada (valor tecleado por el personal) | SÍ |
+| Fondo amarillo claro, letra azul | Dato de entrada (valor que usted escribe) | SÍ |
 | Letra negra | Fórmula de cálculo | NO |
 | Letra verde | Enlace a otra hoja | NO |
 | Fondo gris en encabezados | Títulos de columnas y secciones | NO |
 | Celda vacía en columnas «(opcional)» | El libro usa la norma técnica de PARAMETROS | Sí, si hay dato real |
 
-Las hojas están protegidas sin contraseña para evitar borrar fórmulas por error. Si un responsable necesita modificar la estructura: Revisar > Desproteger hoja. Vuelva a protegerla al terminar.
+Las hojas están protegidas sin contraseña para evitar borrar fórmulas por error. Si necesita modificar la estructura: Revisar > Desproteger hoja. Vuelva a protegerla al terminar.
 
-## 2. Configuración inicial (una sola vez, la hace el económico o el contador)
+## 2. Configuración inicial (una sola vez)
 
 1. PARAMETROS: escriba el nombre de la empresa, el primer mes del período (Fecha_Inicio) y revise las normas técnicas: litros por viaje, kilómetros, capacidad de los camiones y rendimiento del desagrupe (kg por jornal). Revise también los porcentajes de reclamaciones, de comisiones bancarias y las tasas tributarias.
 2. PRECIOS: en la primera fila escriba las tarifas por kg que cobra la empresa en cada región, el precio del diésel, la cita del puerto, la dieta, el pago por jornal y las comisiones de comercialización, con la fecha desde la que rigen.
@@ -23,7 +23,7 @@ Las hojas están protegidas sin contraseña para evitar borrar fórmulas por err
 5. COMERCIAL: escriba los nombres de los 21 gestores (5 del grupo central y 16 provinciales) y el pago fijo mensual de cada uno. El total pasa solo a COSTOS_FIJOS.
 6. Borre los datos de EJEMPLO de las hojas ENTRADA, PRECIOS, ACTIVOS y COMERCIAL. Seleccione las celdas y pulse la tecla Supr. NUNCA elimine filas ni columnas.
 
-## 3. Registro de cada contenedor (hoja ENTRADA). Lo hace el especialista de operaciones
+## 3. Registro de cada contenedor (hoja ENTRADA)
 
 Use una fila por contenedor. Los datos se registran en dos momentos:
 
@@ -33,7 +33,7 @@ Use una fila por contenedor. Los datos se registran en dos momentos:
 - Las columnas «Alertas» y «Utilidad» al final de la fila muestran el resultado al instante.
 - Cada importe debe tener un documento que lo respalde: factura, vale, nómina o comprobante. Anote el número del documento en Observaciones.
 
-## 4. Cierre mensual (lo hace el económico el primer día hábil del mes siguiente)
+## 4. Cierre mensual (el primer día hábil del mes siguiente)
 
 1. Compruebe que todos los contenedores del mes estén en «Cerrado» y sin alertas pendientes.
 2. En COSTOS_FIJOS, si algún gasto fijo real del mes fue distinto del valor base, escriba el valor real en la celda de ese mes. Esa celda sustituye la fórmula solo para ese mes.
@@ -81,7 +81,7 @@ En SIMULADOR la columna «Valor actual» trae los datos reales del libro. Escrib
 - Nunca elimine filas ni columnas. Para borrar datos, seleccione las celdas y pulse Supr.
 - Escriba solo en las celdas amarillas. No copie y pegue formatos desde otros archivos: use «Pegar valores».
 - Escriba los números sin texto: 60, no «60 L». Escriba las fechas como dd/mm/aaaa.
-- Un solo responsable por hoja: operaciones (ENTRADA), economía (PRECIOS, COSTOS_FIJOS, COMERCIAL), dirección (lectura).
+- Trabaje siempre sobre un único archivo maestro. No haga copias de trabajo paralelas: las copias con fecha son solo respaldos.
 - Haga una copia de respaldo semanal y otra en cada cierre mensual.
 - El libro admite 300 contenedores en ENTRADA y 24 meses. Al llegar al límite, guarde el archivo como histórico y empiece uno nuevo con Fecha_Inicio actualizada.
 

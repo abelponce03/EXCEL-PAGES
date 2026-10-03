@@ -1,0 +1,72 @@
+% ============================================================================
+\chapter{El cierre de cada mes}\label{cap:cierre}
+% ============================================================================
+
+El cierre se hace el \textbf{primer día hábil del mes siguiente} y lleva unos 30 minutos. Al terminarlo, los resultados del mes quedan definitivos.
+El ejercicio~5 (sección~\ref{sec:ej5}) es un cierre completo de práctica.
+
+\section{Lista de comprobación del cierre}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{@{}c>{\raggedright\arraybackslash}X l@{}}
+\toprule
+& \textbf{Tarea} & \textbf{Hoja} \\ \midrule
+$\square$ & 1. Todos los contenedores del mes están registrados y en \textbf{Cerrado}. & \hoja{ENTRADA} \\
+$\square$ & 2. Las alertas del mes están resueltas o explicadas en Observaciones. & \hoja{ENTRADA} \\
+$\square$ & 3. Los gastos fijos reales del mes que difieren del valor base están escritos en la columna del mes. & \hoja{COSTOS\_FIJOS} \\
+$\square$ & 4. Si cambió algún precio durante el mes, está como una nueva fila con su fecha. & \hoja{PRECIOS} \\
+$\square$ & 5. El mes a liquidar está elegido y la base variable de cada gestor, escrita. & \hoja{COMERCIAL} \\
+$\square$ & 6. La conciliación dice \textbf{CUADRA}, o la diferencia está explicada (cobros pendientes). & \hoja{COMERCIAL} \\
+$\square$ & 7. Los cuadres dicen \textbf{OK} y la columna «Control» de \hoja{RESUMEN\_MES} es 0. & \hoja{INICIO} \\
+$\square$ & 8. Resultado del mes revisado: utilidad, costo por kg, punto de equilibrio, regiones. & \hoja{RESUMEN\_MES} \\
+$\square$ & 9. Informe del mes exportado a PDF. & \hoja{DASHBOARD} \\
+$\square$ & 10. Archivo guardado y copia de respaldo del mes hecha. & --- \\
+\bottomrule
+\end{tabularx}
+\end{center}
+El anexo~\ref{anx:checklist} tiene esta lista en una página aparte para imprimir.
+
+\section{Detalle de cada tarea}
+
+\subsection*{Gastos fijos reales (tarea 3)}
+En \hoja{COSTOS\_FIJOS} cada mes copia el valor base. Compare con las facturas y nóminas del mes. Si un gasto fue distinto, escriba el importe real
+en la columna de ese mes (los meses empiezan en la columna G, con el primer mes del período).
+
+\begin{atencion}
+\textbf{No cambie el «Valor base» (columna F) para corregir un solo mes}: cambiaría todos los meses, incluidos los ya cerrados.
+Cambie el valor base solo si el gasto cambia \textbf{desde ahora y para siempre}, y antes siga el procedimiento del capítulo~\ref{cap:cambios}.
+\end{atencion}
+
+\subsection*{Liquidación de los gestores (tareas 5 y 6)}
+\begin{pasos}
+\paso En \hoja{COMERCIAL}, escriba en \celda{C4} el primer día del mes que cierra.
+\paso En la columna \textbf{G} escriba lo que gestionó cada gestor en el mes: USD cobrados o kg, según la base.
+\paso La columna \textbf{I} es lo que hay que pagar a cada uno y la fila 33, el total.
+\paso Mire la conciliación (filas 36 a 39). Si dice REVISAR, compare gestor por gestor con los contenedores del mes.
+      Las causas típicas son un cobro sin declarar, un contenedor sin registrar o un cobro pendiente.
+\end{pasos}
+
+\begin{nota}
+Si la empresa paga la comisión sobre lo \textbf{efectivamente cobrado} (es lo recomendable), puede que al cierre falte cobrar algo.
+En ese caso la diferencia de la conciliación es lo pendiente de cobro: anótelo y compruebe que se cobre el mes siguiente.
+\end{nota}
+
+\section{La copia de respaldo}\label{sec:respaldo}
+
+Como usted es la única persona que lleva el libro, la copia de respaldo es su seguro: si el archivo se daña, se borra o se rompe la computadora,
+el trabajo no se pierde.
+
+\begin{pasos}
+\paso Guarde el archivo maestro (\tecla{Ctrl}+\tecla{G}) y ciérrelo.
+\paso Abra la carpeta del archivo en el Explorador de Windows. Haga clic derecho sobre el archivo $\rightarrow$ \menu{Copiar}, y luego clic derecho en
+      un espacio vacío $\rightarrow$ \menu{Pegar}.
+\paso Cambie el nombre de la copia (clic derecho $\rightarrow$ \menu{Cambiar nombre}) por \escribal{Respaldo\_\allowbreak 2026-10\_\allowbreak Rentabilidad.xlsx}
+      (año y mes del cierre).
+\paso Guarde también una copia \textbf{fuera de la computadora}: memoria USB, correo electrónico o la nube.
+\end{pasos}
+
+\begin{consejo}
+Haga además una copia rápida cada viernes. Si un día comete un error que no puede deshacer, recupere la última copia y vuelva a escribir solo lo de
+los últimos días. \textbf{Nunca trabaje sobre una copia de respaldo}: siempre sobre el maestro.
+\end{consejo}

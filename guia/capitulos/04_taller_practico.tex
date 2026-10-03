@@ -1,0 +1,348 @@
+% ============================================================================
+\chapter{Taller práctico: 8 ejercicios guiados}\label{cap:taller}
+% ============================================================================
+
+En este taller hará, una vez y de principio a fin, todo lo que hará después en su trabajo real. Cada ejercicio indica
+\textbf{qué escribir y en qué celda}, y al final trae un cuadro verde con \textbf{los números exactos que debe ver}.
+Si coinciden, lo hizo bien.
+
+\begin{atencion}
+\textbf{Haga los ejercicios sobre una copia de práctica} (sección~\ref{sec:practica}): \texttt{PRACTICA\_Rentabilidad.xlsx}.
+Hágalos \textbf{en orden}: cada ejercicio parte de cómo quedó el anterior. Si se equivoca, use \tecla{Ctrl}+\tecla{Z}.
+Si se pierde del todo, vuelva a copiar el archivo original y empiece de nuevo.
+\end{atencion}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}clX@{}}
+\toprule
+\textbf{Nº} & \textbf{Ejercicio} & \textbf{Qué aprende} \\ \midrule
+1 & Comprobar el estado del libro & Leer los controles de \hoja{INICIO} \\
+2 & Registrar un contenedor que llega & El primer momento de cada contenedor \\
+3 & Completar los datos reales y cerrarlo & El segundo momento; cómo nace una alerta \\
+4 & Sube el precio del diésel & Agregar una vigencia de precios sin alterar el pasado \\
+5 & Cierre del mes de octubre & Gastos reales, liquidación de los gestores y conciliación \\
+6 & Informe del período & Usar el \hoja{DASHBOARD} \\
+7 & ¿Y si subimos la tarifa de Oriente? & Usar el \hoja{SIMULADOR} \\
+8 & Dejar el libro limpio para empezar & Borrar los ejemplos de forma segura \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ============================================================================
+\section{Ejercicio 1. Comprobar el estado del libro}
+
+\begin{ficha}{Ejercicio 1 · Duración: 3 minutos}
+\textbf{Objetivo:} aprender a leer el tablero de control antes de trabajar.\\
+\textbf{Hoja:} \hoja{INICIO}
+\end{ficha}
+
+\begin{pasos}
+\paso Abra \texttt{PRACTICA\_Rentabilidad.xlsx}. Si aparece la barra amarilla de \textbf{Vista protegida}, pulse \boton{Habilitar edición}.
+\paso Haga clic en la pestaña \hoja{INICIO}.
+\paso Baje hasta el bloque \textbf{Estado del libro (controles automáticos)}, alrededor de la fila 35.
+\paso Lea cada línea y compárela con el cuadro verde.
+\end{pasos}
+
+\captura{inicio_controles}{Ejercicio 1: el estado inicial del libro}
+
+\begin{resultado}
+Contenedores registrados \textbf{4}, con alertas \textbf{\vAlertasIni}, abiertos \textbf{\vAbiertosIni};
+cuadres \textbf{OK} y \textbf{OK}; conciliación \textbf{CUADRA}; utilidad acumulada \textbf{\vUAItotal}.
+\end{resultado}
+
+\begin{nota}
+Haga clic en algún nombre de hoja del índice (filas 10 a 22): Excel lo lleva a esa hoja. Para volver, haga clic en la pestaña \hoja{INICIO}.
+\end{nota}
+
+% ============================================================================
+\section{Ejercicio 2. Registrar un contenedor que llega}\label{sec:ej2}
+
+\begin{ficha}{Ejercicio 2 · Duración: 5 minutos}
+\textbf{Situación:} el 27 de octubre de 2026 llega el contenedor \textbf{CONT-PRUEBA-05}. Pasa por ENCI, es un 40' HC con 1\,000 bultos.
+Según el manifiesto, lleva \textbf{5\,000 kg} para Occidente, \textbf{2\,500 kg} para Centro y \textbf{2\,500 kg} para Oriente.\\
+\textbf{Hoja:} \hoja{ENTRADA} · \textbf{Fila:} 10, la primera vacía
+\end{ficha}
+
+\begin{pasos}
+\paso Vaya a la hoja \hoja{ENTRADA}. Las filas 6 a 9 tienen los 4 contenedores de ejemplo. La primera fila libre es la \textbf{10}.
+\paso Haga clic en \celda{B10} y escriba \escriba{CONT-PRUEBA-05}. Pulse \tecla{Tab}: pasa a \celda{C10}. En \celda{A10} aparece el número 5.
+\paso En \celda{C10} escriba la fecha \escriba{27/10/2026} y pulse \tecla{Tab}.
+\paso En \celda{D10} pulse la flecha de la lista y elija \textbf{ENCI}. Pulse \tecla{Tab}.
+\paso En \celda{E10} elija \textbf{40' HC} de la lista. Pulse \tecla{Tab}.
+\paso En \celda{F10} escriba \escriba{1000} y pulse \tecla{Tab}.
+\paso En \celda{G10} escriba \escriba{5000}; en \celda{H10}, \escriba{2500}; en \celda{I10}, \escriba{2500}. Pulse \tecla{Tab} entre una y otra.
+\paso Deje vacías las columnas J a X: todavía no tiene los datos reales.
+\paso Vaya a \celda{Z10} (pulse \tecla{F5}, escriba \escriba{Z10} y \tecla{Enter}) y elija \textbf{Abierto} en la lista.
+\paso Guarde con \tecla{Ctrl}+\tecla{G}.
+\end{pasos}
+
+\captura{ej2_entrada}{Ejercicio 2: el contenedor nuevo en la fila 10 (columnas A a I)}
+\captura{ej2_estado}{Ejercicio 2: estado y resultado del contenedor (columnas Y a AC)}
+
+\begin{resultado}
+\begin{itemize}
+  \item \recuadro{1} \celda{Z10} dice \textbf{Abierto}.
+  \item \recuadro{2} \celda{AB10} (alertas) está \textbf{vacía} y \celda{AC10} (utilidad) muestra \textbf{\vEjDosUAI}.
+\end{itemize}
+\end{resultado}
+
+\begin{nota}
+\textbf{¿Por qué cambió la utilidad de otro contenedor?} Antes del ejercicio, el contenedor 3 (fila 8) tenía una utilidad de \vUAIcTres.
+Ahora tiene \vEjDosUAItres. No es un error: los \textbf{gastos fijos de octubre} se reparten entre todos los contenedores de octubre según
+sus kilogramos. Al llegar uno más, a cada uno le toca una parte menor. Por eso \textbf{el resultado de un mes es definitivo solo cuando el
+mes se cierra}.
+\end{nota}
+
+% ============================================================================
+\section{Ejercicio 3. Completar los datos reales y cerrar el contenedor}\label{sec:ej3}
+
+\begin{ficha}{Ejercicio 3 · Duración: 5 minutos}
+\textbf{Situación:} terminó la distribución del CONT-PRUEBA-05 el 6 de noviembre. Los vales dicen que el viaje al puerto consumió
+\textbf{64 litros}, que el desagrupe en ENCI llevó \textbf{11 jornales} y que el traslado a Oriente consumió \textbf{520 litros}.
+Los demás datos fueron los normales.\\
+\textbf{Hoja:} \hoja{ENTRADA} · \textbf{Fila:} 10
+\end{ficha}
+
+\begin{pasos}
+\paso En \celda{K10} (Litros reales al puerto) escriba \escriba{64}.
+\paso En \celda{M10} (Jornales del desagrupe) escriba \escriba{11}.
+\paso En \celda{S10} (Litros de traslado a Oriente) escriba \escriba{520}.
+\paso Las demás columnas opcionales quedan vacías: el libro usará la norma.
+\paso En \celda{Y10} escriba la fecha de fin \escriba{06/11/2026}.
+\paso En \celda{Z10} cambie el estado a \textbf{Cerrado}.
+\paso En \celda{AA10} anote los documentos: \escribal{Vales 1520-1528; nómina de desagrupe 45}.
+\end{pasos}
+
+\captura{ej3_reales}{Ejercicio 3: datos reales en las columnas opcionales}
+\captura{ej3_estado}{Ejercicio 3: contenedor cerrado, con una alerta}
+
+\begin{resultado}
+\begin{itemize}
+  \item \recuadro{2} \celda{AB10} muestra la alerta: «\textbf{\vEjTresAlerta}».
+  \item \celda{AC10}: la utilidad baja a \textbf{\vEjTresUAI}.
+  \item En \hoja{INICIO}, «Contenedores con alertas» pasa a \textbf{\vEjTresAlertas}.
+\end{itemize}
+\end{resultado}
+
+\captura{ej3_inicio}{Ejercicio 3: el control de INICIO cuenta la nueva alerta}
+
+\begin{nota}
+\textbf{¿Qué significa la alerta?} La norma para el traslado a Oriente es de 450 litros por viaje. Se gastaron 520, un 16\,\% más, y la
+tolerancia es del 10\,\%. El libro no impide registrarlo: \textbf{avisa} para que usted averigüe la causa (un desvío, una avería, una ruta
+distinta, un vale mal anotado\dots).
+\begin{itemize}
+  \item Si el dato es correcto y está justificado, explíquelo en Observaciones.
+  \item Si era un error de anotación, corríjalo. La alerta desaparece sola.
+  \item Si el exceso se repite con todos los viajes, la norma está desactualizada: corríjala en \hoja{PARAMETROS} (capítulo~\ref{cap:cambios}).
+\end{itemize}
+\end{nota}
+
+% ============================================================================
+\section{Ejercicio 4. Sube el precio del diésel}\label{sec:ej4}
+
+\begin{ficha}{Ejercicio 4 · Duración: 8 minutos}
+\textbf{Situación:} desde el \textbf{1 de noviembre de 2026} el diésel pasa de 2,00 a \textbf{2,30 USD/L}. El 10 de noviembre llega el
+contenedor \textbf{CONT-PRUEBA-06} por A.V: un 40' con 820 bultos y 4\,000 / 2\,000 / 2\,000 kg.\\
+\textbf{Hojas:} \hoja{PRECIOS} y \hoja{ENTRADA}
+\end{ficha}
+
+\begin{atencion}
+\textbf{No cambie el 2,00 de la fila 6 por 2,30.} Si lo hiciera, el libro recalcularía todos los contenedores anteriores con el precio nuevo
+y el historial quedaría falseado. Lo correcto es \textbf{agregar una fila} con la nueva fecha.
+\end{atencion}
+
+\begin{pasos}
+\paso Vaya a \hoja{PRECIOS}. La fila 6 tiene los precios vigentes desde el 01/01/2026.
+\paso Seleccione \celda{B6:N6}: haga clic en \celda{B6}, mantenga \tecla{Mayús} y haga clic en \celda{N6}. Cópielo con \tecla{Ctrl}+\tecla{C}.
+\paso Haga clic en \celda{B7} y pegue con \tecla{Ctrl}+\tecla{V}. La fila 7 queda igual que la 6.
+\paso En \celda{A7} escriba \escriba{01/11/2026}: la fecha desde la que rige el cambio.
+\paso En \celda{E7} (Precio del diésel) escriba \escriba{2.30}.
+\paso En \celda{O7} anote el soporte: \escribal{Aumento del diésel (factura CUPET 0457)}.
+\paso Pulse \tecla{Esc} para quitar la marca de copiado.
+\paso Vaya a \hoja{ENTRADA} y registre el nuevo contenedor en la fila \textbf{11}, como en el ejercicio 2:
+      \celda{B11} \escriba{CONT-PRUEBA-06}, \celda{C11} \escriba{10/11/2026}, \celda{D11} \textbf{A.V}, \celda{E11} \textbf{40'},
+      \celda{F11} \escriba{820}, \celda{G11} \escriba{4000}, \celda{H11} \escriba{2000}, \celda{I11} \escriba{2000}, \celda{Z11} \textbf{Abierto}.
+\end{pasos}
+
+\captura{ej4_precios}{Ejercicio 4: la nueva vigencia en la fila 7 (se ocultaron las columnas G a N)}
+
+Para comprobar que cada contenedor tomó su precio, mire la hoja \hoja{CALCULO}. La imagen muestra solo algunas columnas:
+
+\captura{ej4_calculo}{Ejercicio 4: cada contenedor usa los precios de su fecha}
+
+\begin{resultado}
+\begin{itemize}
+  \item Columna «Precios vigentes desde»: el CONT-PRUEBA-06 (fila 11) usa la vigencia del \textbf{01/11/2026}. Todos los demás siguen con la del 01/01/2026.
+  \item Combustible al puerto del CONT-PRUEBA-06: \textbf{\vEjCuatroCombSeis} (60 L $\times$ 2,30). El CONT-PRUEBA-05 sigue con \textbf{\vEjCuatroCombCinco}
+        (64 L $\times$ 2,00).
+  \item La utilidad del CONT-PRUEBA-05 \textbf{no cambió}: sigue en \textbf{\vEjCuatroUAIcinco}. El historial está intacto.
+  \item El CONT-PRUEBA-06 muestra una pérdida de \textcolor{red}{\textbf{\vEjCuatroUAIseis}}.
+\end{itemize}
+\end{resultado}
+
+\begin{nota}
+\textbf{¿Por qué pierde el CONT-PRUEBA-06?} Es, por ahora, el \textbf{único} contenedor de noviembre, así que carga solo con todos los gastos
+fijos del mes. Cuando se registren los demás contenedores de noviembre, el gasto se repartirá y su resultado mejorará.
+Un mes con pocos contenedores es caro: lo verá en el indicador «punto de equilibrio» (capítulo~\ref{cap:resultados}).
+\end{nota}
+
+% ============================================================================
+\section{Ejercicio 5. Cierre del mes de octubre}\label{sec:ej5}
+
+\begin{ficha}{Ejercicio 5 · Duración: 15 minutos}
+\textbf{Situación:} es 1 de noviembre y toca cerrar octubre. La factura de electricidad de octubre fue de \textbf{55 USD}, no de 40.
+Los gestores informan lo que cobraron en octubre. Al cobro habitual se suma el del CONT-PRUEBA-05:
+\textbf{4\,000 USD} en La Habana, \textbf{2\,000} en Villa Clara y \textbf{2\,000} en Santiago de Cuba.\\
+\textbf{Hojas:} \hoja{COSTOS\_FIJOS}, \hoja{COMERCIAL}, \hoja{RESUMEN\_MES}
+\end{ficha}
+
+\subsection*{Parte A: registrar un gasto fijo real distinto del habitual}
+\begin{pasos}
+\paso Vaya a \hoja{COSTOS\_FIJOS}. Busque la fila \textbf{10, «Electricidad y agua»}.
+\paso Las columnas de los meses empiezan en G (sep-2026). Octubre es la columna \textbf{H}.
+\paso Haga clic en \celda{H10}. Verá que contiene \texttt{=\$F10}: copia el valor base. Escriba encima \escriba{55} y pulse \tecla{Enter}.
+\end{pasos}
+
+\captura{ej5_costos}{Ejercicio 5A: gasto real de electricidad de octubre}
+
+\begin{resultado}
+En \hoja{RESUMEN\_MES}, «Costos fijos del mes» de octubre pasa de \vEjCincoFijosOctAntes{} a \textbf{\vEjCincoFijosOct}. Solo cambia octubre: los demás meses siguen con 40.
+\end{resultado}
+
+\subsection*{Parte B: liquidar y conciliar a los gestores}
+\begin{pasos}
+\paso Vaya a \hoja{COMERCIAL}. Compruebe que en \celda{C4} (Mes a liquidar) dice \textbf{oct-2026}. Si no, escriba \escriba{01/10/2026}.
+\paso Baje a la \textbf{conciliación} (filas 35 a 40). Dice \textcolor{rojo}{\textbf{REVISAR}}, con una diferencia de
+      \textcolor{red}{\vEjCincoDif}: los gestores declararon \vEjCincoDeclarada, pero los contenedores registrados suman \vEjCincoReal.
+      Falta declarar el cobro del CONT-PRUEBA-05.
+\end{pasos}
+
+\captura{ej5_comercial_revisar}{Ejercicio 5B: la conciliación detecta una diferencia}
+
+\begin{pasos}
+\setcounter{paso}{2}
+\paso Columna G, base variable del mes. Sume el cobro nuevo al que ya tenía cada gestor:
+  \begin{itemize}
+    \item La Habana, fila 19: \celda{G19} tenía \vEjCincoHabAntes. Escriba \escriba{\vEjCincoHab}.
+    \item Villa Clara, fila 24: \celda{G24} tenía \vEjCincoVcAntes. Escriba \escriba{\vEjCincoVc}.
+    \item Santiago de Cuba, fila 31: \celda{G31} tenía \vEjCincoScAntes. Escriba \escriba{\vEjCincoSc}.
+  \end{itemize}
+\end{pasos}
+
+\begin{consejo}
+Para sumar sin calculadora, escriba la operación en la celda: \escriba{=\vEjCincoHabAntes+4000}. Si su Excel usa coma decimal, escriba la
+cifra con coma.
+\end{consejo}
+
+\captura{ej5_comercial_ok}{Ejercicio 5B: bases corregidas y conciliación cuadrada}
+
+\begin{resultado}
+\recuadro{4} La conciliación dice \textcolor{verde}{\textbf{CUADRA}}. El total a pagar a los 21 gestores pasa de \vEjCincoPagoTotalAntes{} a
+\textbf{\vEjCincoPagoTotal}. Esa es la liquidación de octubre.
+\end{resultado}
+
+\subsection*{Parte C: revisar el resultado y guardar el respaldo}
+\begin{pasos}
+\setcounter{paso}{3}
+\paso Vaya a \hoja{RESUMEN\_MES} y mire la fila de octubre.
+\paso Vaya a \hoja{INICIO} y revise el estado del libro.
+\paso Guarde el archivo y haga la copia de respaldo del mes (sección~\ref{sec:respaldo}).
+\end{pasos}
+
+\captura{ej5_resumen}{Ejercicio 5C: resultado de octubre después del cierre}
+
+\begin{resultado}
+\recuadro{1} Costos fijos de octubre: \textbf{\vEjCincoFijosOct}. \recuadro{2} Utilidad antes de impuesto de octubre: \textbf{\vEjCincoUAIoct}.
+Noviembre, con un solo contenedor, va en \textcolor{red}{\vEjCincoUAInov}.
+\end{resultado}
+
+% ============================================================================
+\section{Ejercicio 6. Informe del período}
+
+\begin{ficha}{Ejercicio 6 · Duración: 3 minutos}
+\textbf{Situación:} la dirección pide el resultado de octubre y noviembre.\\
+\textbf{Hoja:} \hoja{DASHBOARD}
+\end{ficha}
+
+\begin{pasos}
+\paso Vaya a \hoja{DASHBOARD}.
+\paso Haga clic en \celda{C4} (Período desde), pulse la flecha y elija \textbf{oct-2026}. También puede escribir \escriba{01/10/2026}.
+\paso En \celda{C5} (Período hasta) elija \textbf{nov-2026}.
+\end{pasos}
+
+\captura{ej6_dashboard}{Ejercicio 6: indicadores de octubre y noviembre}
+
+\begin{resultado}
+Contenedores: \textbf{\vEjSeisCont}. Utilidad antes de impuesto: \textbf{\vEjSeisUAI}. Margen neto: \textbf{\vEjSeisMargen}.
+Los gráficos de más abajo se actualizan solos.
+\end{resultado}
+
+\begin{consejo}
+Para presentar el informe: \menu{Archivo $\rightarrow$ Imprimir} con la hoja \hoja{DASHBOARD} activa, o \menu{Archivo $\rightarrow$
+Exportar $\rightarrow$ PDF}. La hoja ya está preparada para salir en horizontal y ajustada al ancho de la página.
+\end{consejo}
+
+% ============================================================================
+\section{Ejercicio 7. ¿Y si subimos la tarifa de Oriente?}
+
+\begin{ficha}{Ejercicio 7 · Duración: 5 minutos}
+\textbf{Situación:} Oriente casi no deja ganancia. La dirección pregunta qué pasaría si su tarifa subiera de 0,80 a \textbf{0,95 USD/kg}.\\
+\textbf{Hoja:} \hoja{SIMULADOR}
+\end{ficha}
+
+\begin{pasos}
+\paso Vaya a \hoja{SIMULADOR}. Mire la fila 11, «Tarifa Oriente».
+\paso En \celda{D11} (Valor a simular) escriba \escriba{0.95}.
+\paso Mire el resultado más abajo, en las filas 38 a 46.
+\paso Cuando termine, \textbf{borre \celda{D11}} con \tecla{Supr} para volver al valor real.
+\end{pasos}
+
+\captura{ej7_simulador}{Ejercicio 7: tarifa de Oriente simulada}
+\captura{ej7_resultado}{Ejercicio 7: nuevo resultado}
+
+\begin{resultado}
+\begin{itemize}
+  \item Utilidad de Oriente por contenedor: de \vSimUAIori{} a \textbf{\vEjSieteUAIori}. Margen de Oriente: de \vSimMgOri{} a \textbf{\vEjSieteMgOri}.
+  \item Utilidad del mes: de \vSimUAImes{} a \textbf{\vEjSieteUAImes}.
+\end{itemize}
+\end{resultado}
+
+\begin{nota}
+El simulador \textbf{nunca} modifica los datos reales. Puede probar tantos escenarios como quiera. Recuerde borrar los valores simulados al terminar
+para no confundirse la próxima vez.
+\end{nota}
+
+% ============================================================================
+\section{Ejercicio 8. Dejar el libro limpio para empezar}\label{sec:ej8}
+
+\begin{ficha}{Ejercicio 8 · Duración: 5 minutos}
+\textbf{Objetivo:} aprender a borrar datos sin dañar el libro. Es lo que hará en el archivo real antes de cargar sus datos.\\
+\textbf{Hojas:} \hoja{ENTRADA}, \hoja{COMERCIAL}
+\end{ficha}
+
+\begin{pasos}
+\paso Para el ejercicio, cierre la copia de práctica sin guardar y vuelva a hacer una copia del original: así parte de los 4 contenedores de ejemplo.
+\paso En \hoja{ENTRADA}, haga clic en \celda{B6} y arrastre hasta \celda{AA9}, de modo que queden seleccionadas las 4 filas de ejemplo.
+\paso Pulse \tecla{Supr}. \textbf{No} use «Eliminar filas».
+\paso En \hoja{COMERCIAL}, seleccione \celda{G12:G32} (base variable de los gestores) y pulse \tecla{Supr}.
+\paso Vaya a \hoja{INICIO} y mire el estado del libro.
+\end{pasos}
+
+\captura{ej8_vacio}{Ejercicio 8: ENTRADA sin los ejemplos}
+\captura{ej8_inicio}{Ejercicio 8: el estado del libro vacío}
+
+\begin{resultado}
+Contenedores registrados \textbf{0}, alertas \textbf{0}, cuadres \textbf{OK}, conciliación \textbf{\vEjOchoConc} y utilidad acumulada
+\textcolor{red}{\textbf{\vEjOchoUAI}}.
+\end{resultado}
+
+\begin{nota}
+\textbf{¿Por qué la utilidad es negativa si no hay contenedores?} El período empieza en septiembre de 2026 (\texttt{Fecha\_Inicio}), y ese mes ya
+tiene gastos fijos (\vEjOchoFijos) aunque no se haya registrado ningún contenedor. Es lo correcto: los gastos fijos se pagan haya o no carga.
+Al cargar sus datos reales pondrá su propia fecha de inicio (capítulo~\ref{cap:preparar}).
+\end{nota}
+
+\begin{consejo}
+\textbf{¡Felicidades!} Si llegó hasta aquí con todos los cuadros verdes coincidiendo, ya sabe hacer todo el trabajo del libro.
+El siguiente paso es prepararlo con los datos reales de la empresa.
+\end{consejo}

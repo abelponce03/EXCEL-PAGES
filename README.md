@@ -6,19 +6,21 @@ transitaria (ENCI / A.V), distribución regional y comercialización.
 
 | Archivo | Contenido |
 |---|---|
-| [`Analisis_Rentabilidad_Paqueteria.xlsx`](Analisis_Rentabilidad_Paqueteria.xlsx) | El libro de trabajo (14 hojas, más de 32 000 fórmulas, sin macros) |
-| [`GUIA_DE_USO.md`](GUIA_DE_USO.md) | Guía paso a paso para el personal (también está en la hoja GUIA_USO) |
+| [`Analisis_Rentabilidad_Paqueteria.xlsx`](Analisis_Rentabilidad_Paqueteria.xlsx) | El libro de trabajo (14 hojas, más de 32 000 fórmulas, sin macros). Lo lleva **una sola persona** |
+| [`Guia_de_Uso_Rentabilidad_Paqueteria.pdf`](Guia_de_Uso_Rentabilidad_Paqueteria.pdf) | **Guía de uso completa** (57 páginas): Excel desde cero, recorrido por cada hoja con capturas, 8 ejercicios guiados con los resultados esperados, cierre mensual, solución de problemas y anexos |
+| [`guia/`](guia/) | Fuente LaTeX de la guía: un archivo por capítulo, estilos, capturas y valores generados |
+| [`GUIA_DE_USO.md`](GUIA_DE_USO.md) | Resumen de la guía (es el mismo que trae la hoja GUIA_USO) |
 | [`ANALISIS_Y_PROPUESTA.md`](ANALISIS_Y_PROPUESTA.md) | Diagnóstico, metodología, clasificación de costos y propuestas (también en la hoja ANALISIS) |
-| `build/` | Scripts que generan y verifican el libro |
+| `build/` | Scripts que generan y verifican el libro y la guía |
 
 ## Estructura del libro
 
 | Hoja | Uso |
 |---|---|
-| INICIO | Índice, leyenda de colores y controles automáticos de cuadre |
+| INICIO | Índice (con «cuándo se usa» cada hoja), rutina de trabajo, leyenda de colores y controles automáticos |
 | GUIA_USO / ANALISIS | Guía para el personal / análisis económico y propuestas |
 | DASHBOARD | Indicadores, estructura de costos, rentabilidad por región y gráficos del período elegido |
-| **ENTRADA** | Registro de contenedores: el único lugar donde escribe operaciones |
+| **ENTRADA** | Registro de contenedores: la hoja de trabajo diario |
 | PARAMETROS | Normas técnicas (litros, km, capacidades, rendimientos), % sobre ingreso, tributos |
 | PRECIOS | Tarifas y precios **con fecha de vigencia** (el historial no se altera al cambiar un precio) |
 | ACTIVOS | Depreciación lineal, mantenimiento y seguros del vehículo propio y de los equipos |
@@ -56,12 +58,18 @@ sustituir los datos según la GUIA_USO (sección 2).
 - Precio del diésel en USD (referencia de CUPET 2026, unos 2,00 USD/L para el diésel regular; varía por operación desde mayo de 2026):
   [Directorio Cubano: precio del combustible](https://www.directoriocubano.info/?p=149626).
 
-## Regenerar el libro
+## Regenerar el libro y la guía
 
 ```bash
-pip install openpyxl lxml
-RECALC=/ruta/a/recalc.py build/construir.sh   # genera, recalcula con LibreOffice Calc, inyecta los valores y verifica
+pip install openpyxl lxml pillow
+export RECALC=/ruta/a/recalc.py      # script que recalcula con LibreOffice Calc
+build/construir.sh                   # 1. genera el libro, lo recalcula, inyecta los valores y lo verifica
+build/construir_guia.sh              # 2. capturas + valores de los ejercicios + PDF (requiere TeX Live)
 ```
 
-Sin `RECALC`, el libro se genera sin valores en caché y Excel lo calcula al abrirlo. `build/verificar.py` compara los resultados
-del libro con un cálculo independiente en Python.
+- `build/verificar.py` compara los resultados del libro con un cálculo independiente en Python.
+- `build/capturas.py` reproduce cada ejercicio de la guía en una copia real del libro, la recalcula y toma las
+  capturas (con letras de columna, números de fila y recuadros rojos numerados). También escribe en `guia/valores.tex`
+  los números que la guía cita. **Si el Excel cambia, se vuelven a ejecutar los dos scripts y la guía se actualiza sola.**
+- Para cambiar textos de la guía, edite `guia/capitulos/*.tex`. Los colores y cuadros están en `guia/estilo.sty`.
+  El anexo D de la guía lo explica en detalle.

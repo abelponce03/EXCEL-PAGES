@@ -1,0 +1,119 @@
+% ============================================================================
+% estilo.sty — Formato y comandos propios de la guía de uso.
+% Para cambiar colores, cuadros o el aspecto general, edite SOLO este archivo.
+% ============================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{estilo}[2026/10/03 Estilo de la guía de rentabilidad]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish,es-noindentfirst,es-nodecimaldot]{babel}
+\RequirePackage{lmodern}
+\RequirePackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\RequirePackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm,headheight=15pt]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{caption}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{array}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{amssymb}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc,fit,backgrounds,shadows,babel}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{bookmark}
+
+% ---------------------------------------------------------------- colores
+\definecolor{azul}{HTML}{1F3864}
+\definecolor{azulclaro}{HTML}{D9E1F2}
+\definecolor{entrada}{HTML}{FFF9DB}
+\definecolor{tinta}{HTML}{0000FF}
+\definecolor{enlace}{HTML}{008000}
+\definecolor{rojo}{HTML}{C00000}
+\definecolor{verde}{HTML}{2E7D32}
+\definecolor{gris}{HTML}{595959}
+\definecolor{grisclaro}{HTML}{F2F2F2}
+\definecolor{naranja}{HTML}{EB6834}
+
+% ---------------------------------------------------------------- páginas
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gris}Guía de uso · Análisis de rentabilidad de paquetería}
+\fancyhead[R]{\small\color{gris}\leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+\titleformat{\chapter}[display]
+  {\color{azul}\bfseries\Huge}
+  {\large\color{gris}\MakeUppercase{\chaptertitlename}\ \thechapter}{4pt}{}[\vspace{2pt}{\color{azul}\titlerule[1.5pt]}]
+\titlespacing*{\chapter}{0pt}{-10pt}{18pt}
+\titleformat{\section}{\color{azul}\bfseries\Large}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\color{azul}\bfseries\large}{\thesubsection}{0.6em}{}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{3em}
+\addto\captionsspanish{\renewcommand{\appendixname}{Anexo}\renewcommand{\contentsname}{Contenido}}
+\setlist{itemsep=2pt,topsep=3pt}
+\captionsetup{font=small,labelfont={bf,color=azul},justification=centering}
+
+% ---------------------------------------------------------------- cuadros
+% \begin{nota} ... \end{nota}        información útil
+% \begin{atencion} ... \end{atencion}  cuidado: puede causar un error
+% \begin{consejo} ... \end{consejo}    recomendación práctica
+% \begin{resultado} ... \end{resultado} lo que debe ver en la pantalla si lo hizo bien
+% \begin{ejemplo} ... \end{ejemplo}    ejemplo con números
+\newtcolorbox{nota}{enhanced,breakable,colback=azulclaro!45,colframe=azul,boxrule=0.6pt,arc=2pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={\small\textsf{i}\hspace{0.5em}Para saber}}
+\newtcolorbox{atencion}{enhanced,breakable,colback=red!5,colframe=rojo,boxrule=0.8pt,arc=2pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={\small\textbf{!}\hspace{0.5em}Atención}}
+\newtcolorbox{consejo}{enhanced,breakable,colback=green!4,colframe=verde,boxrule=0.6pt,arc=2pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={\small$\star$\hspace{0.5em}Consejo}}
+\newtcolorbox{resultado}{enhanced,breakable,colback=green!8,colframe=verde,boxrule=1pt,arc=2pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={\small$\checkmark$\hspace{0.5em}Lo que debe ver si lo hizo bien}}
+\newtcolorbox{ejemplo}{enhanced,breakable,colback=grisclaro,colframe=gris,boxrule=0.5pt,arc=2pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={\small Ejemplo}}
+
+% Ficha al inicio de cada ejercicio
+\newtcolorbox{ficha}[1]{enhanced,colback=white,colframe=azul,boxrule=1pt,arc=3pt,
+  left=8pt,right=8pt,top=6pt,bottom=6pt,fonttitle=\bfseries\large,coltitle=white,colbacktitle=azul,
+  title={#1}}
+
+% ---------------------------------------------------------------- pasos numerados
+\newcounter{paso}
+\newenvironment{pasos}{\setcounter{paso}{0}\begin{list}{}{\setlength{\leftmargin}{2.1em}\setlength{\itemsep}{5pt}}}{\end{list}}
+\newcommand{\numpaso}{\tikz[baseline=(n.base)]\node[circle,fill=azul,text=white,inner sep=1.6pt,
+  minimum size=1.35em,font=\footnotesize\bfseries](n){\thepaso};}
+\newcommand{\paso}{\stepcounter{paso}\item[{\numpaso}]}
+
+% ---------------------------------------------------------------- marcas en el texto
+\DeclareRobustCommand{\hoja}[1]{\tikz[baseline=(h.base)]\node[draw=azul,fill=azulclaro,rounded corners=1.5pt,inner sep=1.8pt,
+  font=\footnotesize\bfseries,text=azul](h){#1};}
+\newcommand{\celda}[1]{\textbf{\texttt{#1}}}
+\DeclareRobustCommand{\tecla}[1]{\tikz[baseline=(k.base)]\node[draw=gris,fill=grisclaro,rounded corners=2pt,inner sep=2pt,
+  font=\footnotesize\ttfamily](k){#1};}
+\newcommand{\escriba}[1]{\colorbox{entrada}{\textcolor{tinta}{\texttt{#1}}}}
+% Variante para textos largos (nombres de archivo): sin recuadro, admite salto de línea
+\newcommand{\escribal}[1]{\textcolor{tinta}{\texttt{\bfseries #1}}}
+\newcommand{\boton}[1]{\textsf{\bfseries «#1»}}
+\newcommand{\menu}[1]{\textsf{#1}}
+\DeclareRobustCommand{\recuadro}[1]{\tikz[baseline=(r.base)]\node[circle,fill=rojo,text=white,inner sep=1pt,
+  minimum size=1.2em,font=\scriptsize\bfseries](r){#1};}
+\newcommand{\entradaejemplo}{\colorbox{entrada}{\textcolor{tinta}{\,1.234\,}}}
+
+% ---------------------------------------------------------------- capturas
+% \captura{archivo}{pie de figura}{ancho relativo}
+\newcommand{\captura}[3][\linewidth]{%
+  \begin{figure}[H]\centering
+  \fcolorbox{gris!60}{white}{\includegraphics[width=\dimexpr #1-8pt\relax,height=0.62\textheight,keepaspectratio]{img/#2}}
+  \caption{#3}\end{figure}}
+
+% En marcadores del PDF y en el índice, los comandos gráficos se escriben como texto simple
+\pdfstringdefDisableCommands{\def\hoja#1{#1}\def\celda#1{#1}\def\tecla#1{#1}}

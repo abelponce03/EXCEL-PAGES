@@ -1,0 +1,40 @@
+% ============================================================================
+\chapter{Solución de problemas}\label{cap:problemas}
+% ============================================================================
+
+\section{Mensajes y situaciones frecuentes}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{6.4cm}@{}}
+\toprule
+\textbf{Lo que ve} & \textbf{Por qué ocurre} & \textbf{Qué hacer} \\ \midrule
+\endhead
+«La celda o el gráfico que intenta cambiar está en una hoja protegida» & Intentó escribir en una celda de fórmula. & \boton{Aceptar}. Escriba solo en las celdas amarillas. \\
+«Número no válido», «Fecha no válida» o «Valor no válido» & Escribió texto donde va un número, una fecha imposible o un valor que no está en la lista. & \boton{Reintentar} y escriba solo el número, la fecha dd/mm/aaaa o un valor de la lista. \\
+No puede escribir en nada; hay una barra amarilla arriba & El archivo está en «Vista protegida». & Pulse \boton{Habilitar edición}. \\
+\texttt{\#\#\#\#\#\#} en una celda & La columna es demasiado estrecha para el número. & Haga doble clic en el borde derecho de la letra de la columna, o reduzca el zoom. \\
+Una fecha queda alineada a la izquierda & Excel la tomó como texto: formato o separador incorrecto. & Escríbala como \escriba{27/10/2026}. Si sigue igual, pruebe con el formato de fecha de su Windows. \\
+Un número queda alineado a la izquierda & Se tomó como texto: tiene letras, espacios o el separador decimal equivocado. & Vuelva a escribirlo solo con cifras. Pruebe con punto o con coma decimal. \\
+Una fila de \hoja{ENTRADA} no muestra resultado & Falta el ID en la columna B. & Escriba el ID del contenedor. \\
+Alerta «Falta fecha» o «Falta transitaria» & Dato obligatorio vacío. & Complete la columna C o D. \\
+Alerta «Mes fuera del rango de COSTOS\_FIJOS» & La fecha cae antes de Fecha\_Inicio o después de los 24 meses. & Revise la fecha. Si es correcta, vea «Se llena el libro» (capítulo~\ref{cap:cambios}). \\
+Alerta «Fecha anterior a la 1ª vigencia de precios» & No hay precios para esa fecha. & En \hoja{PRECIOS}, ponga en \celda{A6} una fecha más antigua. \\
+Alerta «Combustible \dots{} sobre norma» & El consumo real supera la norma más la tolerancia. & Investigue la causa (sección~\ref{sec:ej3}). Corrija el dato o explíquelo en Observaciones. \\
+Alerta «Contenedor con pérdida» & Los costos del contenedor superan sus ingresos. & Revise en \hoja{CALCULO} qué etapa pesa más. Puede deberse a pocos contenedores en el mes. \\
+La utilidad de un contenedor cambió sin tocarlo & Se registró otro contenedor del mismo mes y los gastos fijos se repartieron de nuevo. & Es normal (ejercicio~2). Es definitiva al cerrar el mes. \\
+Conciliación: «REVISAR» & Lo declarado por los gestores no coincide con los contenedores del mes. & Busque el cobro sin declarar o el contenedor sin registrar (ejercicio~5). \\
+Cuadres de \hoja{INICIO}: «REVISAR» & Algo se dañó, normalmente una fórmula borrada con la hoja desprotegida. & \tecla{Ctrl}+\tecla{Z}. Si no basta, recupere la última copia de respaldo. \\
+Borré sin querer el contenido de una celda de un mes en \hoja{COSTOS\_FIJOS} & La celda copiaba el valor base. & Escriba \escriba{=\$F10}, cambiando 10 por el número de la fila, o escriba el importe del mes. \\
+Eliminé una fila o columna (con la hoja desprotegida) & Las fórmulas pierden sus referencias (\texttt{\#¡REF!}). & \tecla{Ctrl}+\tecla{Z} enseguida. Si ya guardó, recupere la última copia de respaldo. \\
+\texttt{\#¡VALOR!}, \texttt{\#¡DIV/0!} o \texttt{\#N/A} & Un dato tiene un formato inválido o falta una referencia. & Revise el último dato que escribió. Si no lo encuentra, recupere la copia de respaldo. \\
+El archivo no abre o está dañado & Corte de corriente o fallo del disco. & Abra la última copia de respaldo y vuelva a escribir lo posterior. \\
+En LibreOffice algo se ve distinto & Diferencias de presentación entre programas. & Los cálculos son los mismos. Si un gráfico se ve raro, ábralo en Excel. \\
+\bottomrule
+\end{longtable}
+
+\section{Si nada de lo anterior funciona}
+\begin{pasos}
+\paso No guarde. Cierre el archivo sin guardar los cambios.
+\paso Ábralo de nuevo: tendrá la última versión guardada.
+\paso Si el problema sigue, abra la copia de respaldo más reciente, guárdela como nuevo maestro y repita el trabajo posterior a esa copia.
+\end{pasos}

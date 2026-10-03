@@ -1,0 +1,225 @@
+% ============================================================================
+\chapter{Excel desde cero: lo mínimo que necesita saber}\label{cap:excel}
+% ============================================================================
+
+Si ya usa Excel con soltura, puede pasar al capítulo~\ref{cap:conozca}. Si no, este capítulo le explica, sin tecnicismos,
+todo lo que hace falta para trabajar con el libro.
+
+\section{Las partes de la pantalla}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+% ventana
+\draw[gris,fill=white] (0,0) rectangle (15,9.2);
+% barra de título y cinta
+\fill[verde!70!black] (0,8.6) rectangle (15,9.2);
+\node[white,anchor=west] at (0.2,8.9) {\bfseries Analisis\_Rentabilidad\_Paqueteria.xlsx — Excel};
+\fill[grisclaro] (0,7.3) rectangle (15,8.6);
+\foreach \x/\t in {0.3/Archivo,1.5/Inicio,2.6/Insertar,3.8/Diseño,4.9/Fórmulas,6.1/Datos,7.1/Revisar,8.3/Vista}
+  \node[anchor=west] at (\x,8.35) {\t};
+\foreach \x in {0.4,1.5,2.6,3.7,4.8,5.9,7.0,8.1,9.2}
+  \draw[gris!60,fill=white] (\x,7.45) rectangle ++(0.9,0.65);
+% barra de fórmulas
+\draw[gris,fill=white] (0,6.75) rectangle (15,7.25);
+\draw[gris] (1.6,6.75) -- (1.6,7.25);
+\node[anchor=west] at (0.1,7.0) {\bfseries C8};
+\node[anchor=west] at (1.9,7.0) {06/10/2026};
+% cuadrícula
+\fill[grisclaro] (0,1.35) rectangle (0.6,6.75);
+\fill[grisclaro] (0.6,6.35) rectangle (15,6.75);
+\foreach \c [count=\i] in {A,B,C,D,E,F,G,H}
+  \node at (0.6+\i*1.6-0.8,6.55) {\c};
+\foreach \r [count=\i] in {1,...,10}
+  \node at (0.3,6.35-\i*0.5+0.25) {\r};
+\foreach \i in {0,...,8} \draw[gris!40] (0.6+\i*1.6,1.35) -- (0.6+\i*1.6,6.75);
+\foreach \i in {0,...,10} \draw[gris!40] (0,6.35-\i*0.5) -- (15,6.35-\i*0.5);
+% celda activa C8
+\draw[verde!70!black,line width=1.6pt] (3.8,2.35) rectangle (5.4,2.85);
+\node at (4.6,2.6) {06/10/2026};
+% triángulo de comentario
+\fill[rojo] (2.2,6.35) -- (2.05,6.35) -- (2.2,6.2) -- cycle;
+% desplegable
+\draw[gris,fill=white] (5.42,2.36) rectangle (5.75,2.84); \node at (5.585,2.6) {\tiny$\blacktriangledown$};
+% pestañas
+\fill[grisclaro] (0,0.75) rectangle (15,1.35);
+\foreach \x/\t in {0.9/INICIO,2.5/GUIA\_USO,4.3/ANALISIS,6.2/DASHBOARD}
+  \node[draw=gris!60,fill=white,inner sep=2pt] at (\x,1.05) {\t};
+\node[draw=azul,fill=white,inner sep=2pt,font=\footnotesize\bfseries] at (8.1,1.05) {ENTRADA};
+\node at (9.4,1.05) {\dots};
+\fill[grisclaro!70] (0,0) rectangle (15,0.75);
+\node[anchor=east] at (14.8,0.37) {zoom $-$ \rule{1.5cm}{0.4pt} $+$ 90\%};
+% rótulos
+\tikzset{rot/.style={circle,fill=rojo,text=white,inner sep=1pt,minimum size=1.3em,font=\scriptsize\bfseries}}
+\node[rot] at (11.6,8.9) {1};
+\node[rot] at (10.6,7.8) {2};
+\node[rot] at (1.2,6.95) {3};
+\node[rot] at (9.6,6.55) {4};
+\node[rot] at (0.3,1.85) {5};
+\node[rot] at (5.9,2.95) {6};
+\node[rot] at (5.95,2.6) {7};
+\node[rot] at (2.4,6.1) {8};
+\node[rot] at (11.2,1.05) {9};
+\node[rot] at (12.6,0.37) {10};
+\end{tikzpicture}
+\caption{Esquema de la ventana de Excel (los colores varían según la versión)}
+\end{figure}
+
+\begin{tabularx}{\linewidth}{@{}c>{\bfseries}l X@{}}
+\recuadro{1} & Barra de título & Muestra el nombre del archivo abierto. \\
+\recuadro{2} & Cinta de opciones & Los menús: Archivo, Inicio, Revisar\dots{} Con este libro casi no hará falta usarlos. \\
+\recuadro{3} & Cuadro de nombres & Indica en qué celda está. Aquí, \celda{C8}. \\
+\recuadro{4} & Letras de columna & Las columnas se nombran con letras: A, B, C\dots{} Después de Z siguen AA, AB, AC\dots \\
+\recuadro{5} & Números de fila & Las filas se numeran: 1, 2, 3\dots \\
+\recuadro{6} & Celda activa & La celda seleccionada, con un borde grueso. Lo que escriba irá ahí. \\
+\recuadro{7} & Flecha de lista & Aparece en algunas celdas: al pulsarla muestra las opciones permitidas. \\
+\recuadro{8} & Triángulo rojo & La celda tiene una nota de ayuda. Ponga el ratón encima para leerla. \\
+\recuadro{9} & Pestañas de hoja & Cada pestaña es una hoja del libro. Haga clic para cambiar de hoja. \\
+\recuadro{10} & Zoom & Agranda o achica la vista. No cambia los datos. \\
+\end{tabularx}
+
+\section{Libro, hoja, fila, columna y celda}
+
+\begin{itemize}
+  \item \textbf{Libro}: el archivo completo (\libro).
+  \item \textbf{Hoja}: cada «página» del libro. Este libro tiene 14, por ejemplo \hoja{INICIO}, \hoja{ENTRADA} o \hoja{PRECIOS}.
+  \item \textbf{Celda}: cada casilla de la cuadrícula. Se nombra con la letra de su columna y el número de su fila.
+        \celda{B10} es la celda de la columna B y la fila 10.
+\end{itemize}
+
+\begin{ejemplo}
+Cuando la guía dice «escriba \escriba{5000} en la celda \celda{G10} de la hoja \hoja{ENTRADA}», significa:
+\begin{pasos}
+\paso Haga clic en la pestaña \hoja{ENTRADA}, abajo.
+\paso Busque la columna \textbf{G} (arriba) y la fila \textbf{10} (a la izquierda). Haga clic en la casilla donde se cruzan.
+\paso Escriba \escriba{5000} y pulse \tecla{Enter}.
+\end{pasos}
+\end{ejemplo}
+
+\section{Cómo moverse}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\toprule
+\textbf{Para\dots} & \textbf{Haga esto} \\ \midrule
+Ir a una celda & Haga clic en ella. O pulse \tecla{F5}, escriba la dirección (por ejemplo \escriba{AB10}) y pulse \tecla{Enter}. \\
+Moverse una celda & Use las flechas \tecla{$\leftarrow$} \tecla{$\rightarrow$} \tecla{$\uparrow$} \tecla{$\downarrow$}. \\
+Pasar a la celda de la derecha después de escribir & \tecla{Tab} \\
+Pasar a la celda de abajo después de escribir & \tecla{Enter} \\
+Ir al principio de la hoja & \tecla{Ctrl}+\tecla{Inicio} \\
+Cambiar a la hoja siguiente / anterior & \tecla{Ctrl}+\tecla{AvPág} / \tecla{Ctrl}+\tecla{RePág}, o clic en la pestaña \\
+Ver columnas muy a la derecha & Barra de desplazamiento horizontal, o \tecla{F5} y la dirección \\
+\bottomrule
+\end{tabularx}
+
+\begin{nota}
+En \hoja{ENTRADA} y otras hojas, los títulos de arriba y las primeras columnas están \textbf{fijos}: no se mueven al desplazarse.
+Así siempre sabe en qué contenedor y en qué columna está.
+\end{nota}
+
+\section{Escribir, corregir y borrar}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\toprule
+\textbf{Para\dots} & \textbf{Haga esto} \\ \midrule
+Escribir en una celda vacía & Selecciónela, escriba y pulse \tecla{Enter}. \\
+Reemplazar lo que hay en una celda & Selecciónela y escriba encima. Lo anterior se sustituye al pulsar \tecla{Enter}. \\
+Corregir solo una parte & Selecciónela y pulse \tecla{F2} (o doble clic). Mueva el cursor con las flechas y corrija. \\
+Arrepentirse mientras escribe & \tecla{Esc}: la celda queda como estaba. \\
+Borrar el contenido & Seleccione la celda, o varias, y pulse \tecla{Supr}. \\
+\textbf{Deshacer lo último} & \tecla{Ctrl}+\tecla{Z}. Puede pulsarlo varias veces. \\
+Seleccionar varias celdas & Haga clic en la primera y arrastre el ratón; o mantenga \tecla{Mayús} y use las flechas. \\
+\bottomrule
+\end{tabularx}
+
+\begin{atencion}
+\textbf{Nunca elimine filas ni columnas} (clic derecho $\rightarrow$ «Eliminar»). Las fórmulas dependen de la posición de cada fila.
+Para quitar datos, selecciónelos y pulse \tecla{Supr}. El libro está protegido para impedirlo, pero conviene saberlo.
+\end{atencion}
+
+\section{Números, fechas y decimales}
+
+\begin{itemize}
+  \item \textbf{Números}: escriba solo cifras, sin unidades ni símbolos: \escriba{5000}, no «5000 kg»; \escriba{2.30} o \escriba{2,30}
+        (vea la nota), no «2,30 USD». El libro ya sabe en qué unidad va cada columna.
+  \item \textbf{Fechas}: escriba día/mes/año: \escriba{27/10/2026}. Si al pulsar \tecla{Enter} la fecha queda alineada a la
+        \textbf{derecha}, Excel la reconoció. Si queda a la izquierda, la tomó como texto: corríjala.
+  \item \textbf{Porcentajes}: escriba \escriba{3\%} o \escriba{0.03}, que son lo mismo.
+\end{itemize}
+
+\begin{nota}
+\textbf{Punto o coma decimal.} Depende de la configuración de Windows. En las imágenes de esta guía los números se ven
+con coma de miles y punto decimal: \texttt{\$2,806.24}. En su computadora pueden verse como \texttt{2.806,24~\$}. Es el mismo número.
+Use el separador decimal que use su Excel: si escribe \escriba{2,30} y Excel lo toma como texto (alineado a la izquierda),
+escriba \escriba{2.30}, o al revés.
+\end{nota}
+
+\section{Listas desplegables, notas de ayuda y avisos}
+
+\begin{itemize}
+  \item \textbf{Listas desplegables}: algunas celdas (Transitaria, Tipo, Estado\dots) solo admiten ciertos valores. Al seleccionarlas aparece
+        una flecha \recuadro{7}: púlsela y elija. También puede escribir el valor exacto.
+  \item \textbf{Notas de ayuda}: los títulos con un triángulo rojo en la esquina \recuadro{8} tienen una explicación. Ponga el ratón encima.
+  \item \textbf{Valor no válido}: si escribe algo no permitido (texto en una celda de números, una fecha imposible, un valor que no está
+        en la lista), Excel muestra este aviso:
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+\node[draw=gris,fill=white,text width=8.5cm,inner sep=8pt,font=\small,drop shadow] (v) {
+  \textbf{Número no válido}\\[4pt]
+  Escriba un número mayor o igual que 0, sin texto.\\[6pt]
+  \hfill\fbox{\footnotesize Reintentar}\;\fbox{\footnotesize Cancelar}\;\fbox{\footnotesize Ayuda}};
+\end{tikzpicture}
+\end{center}
+Pulse \boton{Reintentar} para corregir lo que escribió, o \boton{Cancelar} para dejar la celda como estaba.
+
+\begin{itemize}
+  \item \textbf{Hoja protegida}: si intenta escribir en una celda de fórmula (letra negra o verde), Excel avisa:
+  \emph{«La celda o el gráfico que intenta cambiar está en una hoja protegida»}. Pulse \boton{Aceptar}: no pasó nada.
+  Esa celda se calcula sola. Escriba solo en las celdas amarillas.
+\end{itemize}
+
+\section{Abrir y guardar}
+
+\begin{pasos}
+\paso Abra el archivo con doble clic.
+\paso Si aparece una barra amarilla que dice \textbf{VISTA PROTEGIDA}, típica de archivos recibidos por correo, pulse
+      \boton{Habilitar edición}. Si no lo hace, no podrá escribir.
+\paso Para \textbf{guardar}, pulse \tecla{Ctrl}+\tecla{G} (Excel en español) o \tecla{Ctrl}+\tecla{S} (Excel en inglés), o el icono
+      del disquete. Guarde cada vez que termine un contenedor.
+\paso Para hacer una \textbf{copia con otro nombre}: \menu{Archivo $\rightarrow$ Guardar como}. Elija la carpeta y escriba el nombre,
+      por ejemplo \escribal{Rentabilidad\_2026-10.xlsx}.
+\end{pasos}
+
+\begin{atencion}
+Después de un «Guardar como», Excel queda trabajando con el archivo \emph{nuevo}. Si la copia era solo un respaldo, cierre y vuelva a
+abrir su archivo maestro, o guarde la copia como se explica en la sección~\ref{sec:respaldo}.
+\end{atencion}
+
+\section{Hacer una copia de práctica}\label{sec:practica}
+
+Antes de los ejercicios del capítulo~\ref{cap:taller}, haga una copia para practicar sin miedo:
+
+\begin{pasos}
+\paso Abra \libro.
+\paso \menu{Archivo $\rightarrow$ Guardar como} y escriba \escribal{PRACTICA\_Rentabilidad.xlsx}.
+\paso Trabaje en \texttt{PRACTICA\_Rentabilidad.xlsx}. El original queda intacto.
+\end{pasos}
+
+\section{Resumen de teclas útiles}
+
+\begin{center}
+\begin{tabular}{ll@{\hspace{2cm}}ll}
+\toprule
+\tecla{Enter} & confirmar y bajar & \tecla{Ctrl}+\tecla{Z} & deshacer \\
+\tecla{Tab} & confirmar e ir a la derecha & \tecla{Ctrl}+\tecla{G} / \tecla{S} & guardar \\
+\tecla{Esc} & cancelar lo que escribe & \tecla{Ctrl}+\tecla{C} / \tecla{V} & copiar / pegar \\
+\tecla{F2} & corregir dentro de la celda & \tecla{F5} & ir a una celda \\
+\tecla{Supr} & borrar el contenido & \tecla{Ctrl}+\tecla{Inicio} & ir al principio \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{consejo}
+Para copiar datos desde otro archivo, use \textbf{Pegado especial $\rightarrow$ Valores}: clic derecho $\rightarrow$ «Opciones de pegado»
+$\rightarrow$ el icono «123». Así no se arrastran colores ni formatos ajenos.
+\end{consejo}

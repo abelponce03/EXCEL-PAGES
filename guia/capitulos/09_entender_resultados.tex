@@ -1,0 +1,90 @@
+% ============================================================================
+\chapter{Entender los resultados}\label{cap:resultados}
+% ============================================================================
+
+Este capítulo explica, con los números de ejemplo del libro, qué significa cada indicador y qué decisiones ayuda a tomar.
+
+\section{De los ingresos a la utilidad}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[
+  b/.style={draw=azul,minimum height=0.9cm,text width=6.3cm,align=left,font=\small,inner sep=4pt},
+  r/.style={b,fill=azulclaro,font=\small\bfseries}]
+\node[r] (i) {Ingresos = kg $\times$ tarifa de cada región};
+\node[b,below=0pt of i] (v) {$-$ Costos variables (puerto, transitaria, distribución, comisión variable, reclamaciones, banca)};
+\node[r,below=0pt of v] (m) {= Margen de contribución};
+\node[b,below=0pt of m] (f) {$-$ Costos fijos del mes (o la parte de cada contenedor)};
+\node[b,below=0pt of f] (t) {$-$ Tributos sobre ingresos (10\,\% + 1\,\%)};
+\node[r,below=0pt of t] (u) {= Utilidad antes de impuesto (UAI)};
+\node[b,below=0pt of u] (iu) {$-$ Impuesto sobre utilidades (35\,\%, estimado)};
+\node[r,below=0pt of iu,fill=green!15] (n) {= Utilidad neta estimada};
+\node[right=0.6cm of m,text width=6cm,font=\small,align=left] {Con los datos de ejemplo:\\ingresos \vIngtotal; margen de contribución \vMCpct{} de los ingresos.};
+\node[right=0.6cm of u,text width=6cm,font=\small,align=left] {UAI \vUAItotal};
+\node[right=0.6cm of n,text width=6cm,font=\small,align=left] {Utilidad neta \vUNtotal};
+\end{tikzpicture}
+\caption{Cómo se forma la utilidad}
+\end{figure}
+
+\section{Los indicadores, uno por uno}
+
+\begin{description}[style=nextline,leftmargin=1.2em,itemsep=6pt]
+\item[Margen de contribución (MC)]
+  Lo que queda de los ingresos después de pagar los gastos que dependen de cada contenedor. Es el dinero disponible para pagar los gastos fijos y
+  para ganar. Un MC del \vMCpct{} quiere decir que ese porcentaje de cada dólar que entra queda disponible para cubrir los gastos fijos y dar ganancia.
+\item[Utilidad antes de impuesto (UAI)]
+  La ganancia del período después de todos los gastos y de los tributos sobre los ingresos. Si es negativa (en rojo y entre paréntesis), el
+  período tuvo pérdidas.
+\item[Utilidad neta estimada]
+  La UAI menos el impuesto sobre utilidades estimado (35\,\%). El impuesto real se liquida \textbf{una vez al año}: use la tabla anual de \hoja{RESUMEN\_MES}
+  y confírmela con el contador.
+\item[Ingreso por kg y costo total por kg]
+  Cuánto entra y cuánto cuesta, en promedio, cada kg transportado. En el ejemplo entran \vIngKg{} y cuesta \vCostoKg{} por kg. La diferencia es la
+  utilidad por kg. Si el costo por kg sube de un mes a otro, busque la causa en la estructura de costos del \hoja{DASHBOARD}.
+\item[Punto de equilibrio]
+  Los kg (o contenedores) necesarios para cubrir \textbf{exactamente} todos los gastos fijos: por debajo hay pérdidas; por encima, ganancias.
+  En el ejemplo hacen falta \vPEkg{} kg en el período.
+\item[Margen de seguridad]
+  Cuánto pueden bajar los kg antes de entrar en pérdidas. Un \vMSeg{} significa que el volumen podría caer ese porcentaje y la empresa todavía
+  no perdería. Cuanto mayor, más tranquilidad.
+\item[Fijos no absorbidos]
+  Gastos fijos que ningún contenedor cubrió: un mes sin arribos, o una región sin carga ese mes. Indican \textbf{capacidad ociosa}, es decir,
+  se pagó una estructura que no se usó.
+\item[Desvío del combustible]
+  Cuánto se apartó el consumo real de la norma. Positivo: se gastó más de lo normal.
+\end{description}
+
+\section{Leer la rentabilidad por región}
+
+La utilidad de cada región se calcula así: sus ingresos, menos sus propios costos (combustible, desagrupe regional, comisión y gastos fijos de la
+región), menos \textbf{su parte de los costos compartidos} (puerto, transitaria y gastos fijos generales) según sus kg.
+
+\begin{ejemplo}
+Con los datos de ejemplo, Occidente gana \vUAIocc, Centro \vUAIcen{} y Oriente \textcolor{red}{\vUAIori}. Oriente cobra lo mismo por kg, pero tiene
+dos tramos de transporte y un segundo desagrupe. Con una tarifa única, \textbf{Occidente está pagando las pérdidas de Oriente}.
+El \hoja{SIMULADOR} calcula la tarifa mínima de Oriente (\vSimTminOri{} por kg) y el ejercicio~7 muestra el efecto de subirla.
+\end{ejemplo}
+
+\section{Preguntas que el libro le ayuda a responder}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{6.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Pregunta} & \textbf{Dónde mirar} \\ \midrule
+¿Ganamos dinero este mes? & \hoja{RESUMEN\_MES}, columna «Utilidad antes de impuesto» \\
+¿Cuál fue el contenedor menos rentable y por qué? & \hoja{ENTRADA}, columna AC; detalle en \hoja{CALCULO} \\
+¿Qué región conviene revisar? & \hoja{DASHBOARD}, rentabilidad por región \\
+¿Qué tarifa mínima debemos cobrar? & \hoja{SIMULADOR}, fila «Tarifa mínima de equilibrio» \\
+¿Cuántos contenedores necesitamos al mes? & \hoja{SIMULADOR}, punto de equilibrio y tabla de contenedores \\
+¿Qué pasa si sube el diésel? & \hoja{SIMULADOR}, tabla de sensibilidad \\
+¿En qué se va el dinero? & \hoja{DASHBOARD}, estructura de costos \\
+¿Cuánto pagaremos de impuesto este año? & \hoja{RESUMEN\_MES}, liquidación anual estimada \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Cómo presentar los resultados a la dirección}
+\begin{pasos}
+\paso En \hoja{DASHBOARD}, elija el período.
+\paso Exporte la hoja a PDF: \menu{Archivo $\rightarrow$ Exportar $\rightarrow$ Crear PDF}, o \menu{Imprimir} y elija la impresora «PDF».
+\paso Acompáñelo con tres frases: la utilidad del período y su tendencia, la región más débil y su causa, y una propuesta (tarifa, consolidar viajes, controlar combustible\dots).
+\end{pasos}
